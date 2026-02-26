@@ -1,5 +1,18 @@
 # Publicar a LP no GitHub Pages
 
+## Repositório privado: o que fazer
+
+No plano **gratuito** do GitHub, o **GitHub Pages só funciona em repositórios públicos**. Se o repositório estiver privado, você tem duas opções:
+
+| Opção | Como |
+|-------|------|
+| **Tornar o repositório público** | Settings → General → Danger zone → **Change repository visibility** → **Make public**. Assim o Pages funciona de graça e a LP fica acessível pela URL. O código da LP fica visível para quem acessar o repo. |
+| **Manter privado** | Só é possível usar Pages em repo privado com **GitHub Pro**, **Team** ou **Enterprise**. Em Settings → Pages você consegue ativar normalmente. |
+
+Para só testar em dispositivos, tornar o repo público costuma ser o caminho mais simples. Depois você pode voltar para privado (e o site deixa de funcionar até ativar de novo ou tornar público outra vez).
+
+---
+
 ## 1. Subir o código no GitHub
 
 Se ainda não fez o push do projeto:
@@ -35,4 +48,4 @@ git push origin main
 
 - **index.html** na raiz redireciona para **landing.html**; assim a LP é a página inicial.
 - Qualquer alteração em **landing.html**, **css/** ou **image/** basta ser commitada e enviada com `git push`; o GitHub Pages atualiza sozinho (pode levar 1–2 minutos).
-- Se o repositório for público, o GitHub Pages é gratuito.
+- No plano gratuito, o Pages exige repositório público (veja a seção acima).
