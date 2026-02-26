@@ -20,6 +20,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style>html { scroll-behavior: smooth; }
+  /* Corrige capitalize do tema: títulos exibem como escrito; .text-uppercase continua em maiúsculas */
+  body.index2 h1, body.index2 h2, body.index2 h3, body.index2 h4, body.index2 h5, body.index2 h6 { text-transform: none; }
+  body.index2 .text-uppercase { text-transform: uppercase !important; }
   /* Logo header: logo_sem_fundo.png — desktop */
   .header-logo-wrap { display: block; }
   .header-logo-link { display: block; }
