@@ -1738,7 +1738,7 @@ footer .footer-bottom .social-link a i:hover {
   overflow: visible;
 }
 .index2 .feature .circle-container img {
-  margin-top: -50%;
+  margin-top: -15%;
 }
 @media (max-width: 992px) {
   .index2 .feature .circle-container img {
@@ -1782,7 +1782,10 @@ footer .footer-bottom .social-link a i:hover {
   }
 }
 .index2 .about {
-  margin-top: -100px;
+  margin-top: 0;
+}
+.index2 #tecnologia {
+  padding-bottom: 4rem;
 }
 .index2 .about .overlay {
   background-image: url(../image/shape-pat.png);
@@ -2086,6 +2089,46 @@ footer .footer-bottom .social-link a i:hover {
   width: 44px;
   font-size: 20px;
   line-height: 40px;
+}
+
+/* Contraste: texto .primary em fundos escuros (landing) */
+.banner .dynamic-text.primary,
+.banner .dynamic-wrapper .primary {
+  color: #ffffff !important;
+}
+#tecnologia .text-center.mb-5 .primary,
+#tecnologia .text-center.mb-5 h6.primary,
+#tecnologia .feature-box .primary,
+#tecnologia .feature-box h3.primary {
+  color: #ffffff !important;
+}
+#tecnologia .feature-box {
+  background: rgba(0, 0, 0, 0.25);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+#tecnologia .feature-box p.white {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+.index2 .feature .feature-banner {
+  border: 1px solid rgba(30, 33, 64, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+.index2 .feature .feature-banner .primary,
+.index2 .feature .feature-banner h4 {
+  color: #1e2140 !important;
+}
+.index2 .feature .feature-banner p {
+  color: #333 !important;
+}
+#como-funciona .service-box .primary,
+#como-funciona .service-box h3.primary {
+  color: #ffffff !important;
+}
+#contato .primary {
+  color: #ffffff !important;
+}
+#depoimentos .testimonial-box .primary {
+  color: #C9A227 !important;
 }
 
 /*# sourceMappingURL=style.css.map */
