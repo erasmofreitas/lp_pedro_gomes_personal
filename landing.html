@@ -28,6 +28,9 @@
   /* Logo header: logo_sem_fundo.png — desktop */
   .header-logo-wrap { display: block; }
   .header-logo-link { display: block; }
+  /* Botão do header: texto em uma linha só */
+  .header-cta-btn { white-space: nowrap; }
+
   .header-logo-img {
     display: block;
     width: auto;
@@ -64,6 +67,31 @@
     max-height: 160px !important;
     object-fit: contain !important;
     object-position: center !important;
+  }
+
+  /* Sobre: foto em moldura redonda acima do texto no mobile */
+  .about .about-photo-circle {
+    width: 260px;
+    height: 260px;
+    margin: 0 auto 1.25rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid rgba(255,255,255,0.9);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  }
+  .about .about-photo-circle .about-photo-img {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: none !important;
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+
+  /* Botão do header no mobile: fonte e padding menores para caber em uma linha */
+  .header-cta-btn {
+    font-size: 0.8rem !important;
+    padding-left: 0.6rem !important;
+    padding-right: 0.6rem !important;
   }
 
   body{ overflow-x:hidden; }
@@ -115,7 +143,7 @@
                 <div class="header-btn">
                   <ul class="d-flex dropdown align-items-center gap-2">
                     <li>
-                      <a href="#precos" class="btn-primary">Ver planos</a>
+                      <a href="#precos" class="btn-primary header-cta-btn">Conheça nossa consultoria especializada</a>
                     </li>
                   </ul>
                 </div>
@@ -212,17 +240,17 @@
     <div class="container position-relative pt-8">
       <div class="about-inner">
         <div class="row gx-lg-5 align-items-center gy-5">
-          <div class="col-lg-7 order-2 order-lg-1">
+          <div class="col-12 col-lg-7 order-1 order-lg-1">
             <div class="about-left me-lg-5">
-              <div class="about-images text-center mb-3">
-                <img src="image/pedro_sem_fundo.png" alt="Prof. Pedro Gomes - Treinador" class="border border-5 border-white shadow" style="max-width: 100%; width: auto; max-height: 420px; object-fit: contain;">
+              <div class="about-images about-photo-circle text-center mb-3">
+                <img src="image/pedro_sem_fundo.png" alt="Prof. Pedro Gomes - Treinador" class="about-photo-img border border-5 border-white shadow" style="max-width: 100%; width: auto; max-height: 420px; object-fit: contain;">
               </div>
               <div class="text-center py-3 px-3 bg-primary rounded">
                 <span class="h4 fw-bold white mb-0">4.200+ <span class="d-block small opacity-90">alunos no mundo</span></span>
               </div>
             </div>
           </div>
-          <div class="col-lg-5 order-1 order-lg-2">
+          <div class="col-12 col-lg-5 order-2 order-lg-2">
             <div class="about-right text-center text-lg-start">
               <h6 class="primary mb-3 text-uppercase fw-medium">Quem é o Prof. Pedro Gomes</h6>
               <h2 class="ps-3 border-start border-4 border-primary mb-4">Muito prazer, sou o Prof. Pedro Gomes</h2>
