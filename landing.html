@@ -31,6 +31,143 @@
   /* Botão do header: texto em uma linha só */
   .header-cta-btn { white-space: nowrap; }
 
+  /* Seção Tecnologia: background com imagem de teste */
+  body.index2 .feature#tecnologia {
+    background-image: url('image/fundo_alteres.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  /* Overlay leve para legibilidade do texto (opcional – ajuste a opacidade se precisar) */
+  body.index2 .feature#tecnologia::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 42, 71, 0.5);
+    pointer-events: none;
+  }
+  body.index2 .feature#tecnologia .container { position: relative; z-index: 1; }
+
+  /* Mesmo modelo de background + overlay para as seções abaixo da Tecnologia */
+  body.index2 .about,
+  body.index2 .achievement,
+  body.index2 .service,
+  body.index2 .contact-qoute,
+  body.index2 .price,
+  body.index2 .testimonial1,
+  body.index2 .stat {
+    position: relative;
+    background-color: transparent !important;
+    background-image: url('image/fundo_alteres.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  body.index2 .about::before,
+  body.index2 .achievement::before,
+  body.index2 .service::before,
+  body.index2 .contact-qoute::before,
+  body.index2 .price::before,
+  body.index2 .testimonial1::before,
+  body.index2 .stat::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 42, 71, 0.5);
+    pointer-events: none;
+  }
+  body.index2 .about .container,
+  body.index2 .achievement .container,
+  body.index2 .service .container,
+  body.index2 .contact-qoute .container,
+  body.index2 .price .pricing-title,
+  body.index2 .price .pricing-body,
+  body.index2 .testimonial1 .container,
+  body.index2 .stat .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Cores e legibilidade nas seções com background + overlay */
+  body.index2 .feature#tecnologia .white,
+  body.index2 .about .white,
+  body.index2 .about .about-right,
+  body.index2 .about .about-right p,
+  body.index2 .about .about-right h2,
+  body.index2 .about .about-right h6,
+  body.index2 .about .about-right .fw-bold,
+  body.index2 .about .about-right .fst-italic,
+  body.index2 .about .about-right .small,
+  body.index2 .achievement .white,
+  body.index2 .achievement p,
+  body.index2 .achievement h2,
+  body.index2 .achievement h6,
+  body.index2 .service .white,
+  body.index2 .service .service-box,
+  body.index2 .service .service-box p,
+  body.index2 .service .service-box h3,
+  body.index2 .contact-qoute .white,
+  body.index2 .contact-qoute h3,
+  body.index2 .contact-qoute p,
+  body.index2 .price .pricing-title .white,
+  body.index2 .price .pricing-title h2,
+  body.index2 .price .pricing-title h6,
+  body.index2 .testimonial1 .white,
+  body.index2 .testimonial1 .testimonial-top p,
+  body.index2 .testimonial1 .testimonial-bottom p,
+  body.index2 .stat .white,
+  body.index2 .stat p,
+  body.index2 .stat h2,
+  body.index2 .stat h6 {
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  /* Destaque dourado (accent) nas seções com overlay */
+  body.index2 .feature#tecnologia .primary,
+  body.index2 .feature#tecnologia .feature-box .primary,
+  body.index2 .feature#tecnologia .feature-box h3,
+  body.index2 .about .about-right .primary,
+  body.index2 .about .about-right h6.primary,
+  body.index2 .achievement .primary,
+  body.index2 .service .primary,
+  body.index2 .service .service-box .primary,
+  body.index2 .service .service-box h3,
+  body.index2 .contact-qoute .primary,
+  body.index2 .price .pricing-title .primary,
+  body.index2 .testimonial1 .testimonial-box .primary,
+  body.index2 .testimonial1 .testimonial-bottom h4,
+  body.index2 .stat .secondary,
+  body.index2 .stat .progress-num {
+    color: #E0BB5A !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  }
+  /* Caixas (feature, service) com fundo escuro e texto legível */
+  body.index2 .feature#tecnologia .feature-box,
+  body.index2 .service .service-box {
+    background: rgba(15, 42, 71, 0.75) !important;
+    border-color: rgba(224, 187, 90, 0.5) !important;
+  }
+  body.index2 .service .service-box.bg-primary {
+    background: rgba(15, 42, 71, 0.9) !important;
+  }
+  /* Depoimentos: caixa com fundo escuro para contraste */
+  body.index2 .testimonial1 .testimonial-top {
+    background: rgba(15, 42, 71, 0.6);
+    border-color: rgba(224, 187, 90, 0.4);
+  }
+  /* Sobre: badge "4.200+ alunos" */
+  body.index2 .about .bg-primary {
+    background-color: rgba(15, 42, 71, 0.9) !important;
+  }
+  /* Links no footer da página e links gerais nas seções escuras */
+  body.index2 .feature#tecnologia a:not(.btn-primary):not(.btn-secondary),
+  body.index2 .about .about-right a:not(.btn-primary),
+  body.index2 .achievement a:not(.btn-primary),
+  body.index2 .service a:not(.btn-primary),
+  body.index2 .contact-qoute a:not(.btn-white1) {
+    color: #E0BB5A !important;
+  }
+
   .header-logo-img {
     display: block;
     width: auto;
