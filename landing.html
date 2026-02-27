@@ -23,8 +23,8 @@
   /* Corrige capitalize do tema: títulos exibem como escrito; .text-uppercase continua em maiúsculas */
   body.index2 h1, body.index2 h2, body.index2 h3, body.index2 h4, body.index2 h5, body.index2 h6 { text-transform: none; }
   body.index2 .text-uppercase { text-transform: uppercase !important; }
-  /* Header com fundo escuro (evita barra branca no topo no desktop e mobile) */
-  body.index2 header { background-color: #1D1E21 !important; }
+  /* Header: deep blue (premium palette – overridden by style.css variables) */
+  body.index2 header { background-color: #0F2A47 !important; }
   /* Logo header: logo_sem_fundo.png — desktop */
   .header-logo-wrap { display: block; }
   .header-logo-link { display: block; }
@@ -46,12 +46,12 @@
     margin-right: calc(50% - 50vw) !important;
     padding: 0.5rem 0;
     box-sizing: border-box;
-    background-color: #1D1E21; /* só a faixa do logo, não altera o restante do header */
+    background-color: #0F2A47; /* faixa do logo: deep blue */
   }
   header {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
-    background-color: #1D1E21 !important; /* elimina a barra branca no topo no mobile */
+    background-color: #0F2A47 !important; /* mobile header: deep blue */
   }
   header .container { padding-left: 0 !important; padding-right: 0 !important; }
   .header-logo-link { display: block !important; width: 100% !important; }
@@ -386,7 +386,7 @@
           </div>
           <div class="col-lg-5">
             <div class="contact-qoute-right text-lg-end">
-              <a href="contact.html" class="btn-white1">Contato</a>
+              <a href="https://wa.me/556292937723?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20os%20planos." class="btn-white1" target="_blank" rel="noopener noreferrer">Contato</a>
             </div>
           </div>
         </div>
@@ -697,11 +697,12 @@
               <div class="footer-bottom-links">
                 <h4 class="white ps-3 border-start border-4 border-primary mb-4">Links Rápidos</h4>
                 <ul>
-                  <li class="mb-3"><a href="about.html">Sobre</a></li>
-                  <li class="mb-3"><a href="career.html">Carreiras</a></li>
-                  <li class="mb-3"><a href="">Política de Privacidade</a></li>
-                  <li class="mb-3"><a href="blog.html">Notícias</a></li>
-                  <li><a href="">Aviso Legal</a></li>
+                  <li class="mb-3"><a href="#inicio">Início</a></li>
+                  <li class="mb-3"><a href="#sobre">Sobre</a></li>
+                  <li class="mb-3"><a href="#como-funciona">Como funciona</a></li>
+                  <li class="mb-3"><a href="#precos">Planos</a></li>
+                  <li class="mb-3"><a href="#depoimentos">Depoimentos</a></li>
+                  <li><a href="#contato">Contato</a></li>
                 </ul>
               </div>
             </div>

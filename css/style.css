@@ -92,6 +92,16 @@ textarea {
     --bs-modal-width: 350px;
   }
 }
+/* Premium landing page – brand color variables */
+:root {
+  --lp-deep-blue: #0F2A47;
+  --lp-cement: #2E3135;
+  --lp-graphite: #3A3F45;
+  --lp-gold: #C9A646;
+  --lp-gold-hover: #E0BB5A;
+  --lp-light: #F2F2F2;
+}
+
 body {
   font-family: "Poppins", Arial, sans-serif;
   font-size: 16px;
@@ -2129,6 +2139,211 @@ footer .footer-bottom .social-link a i:hover {
 }
 #depoimentos .testimonial-box .primary {
   color: #C9A227 !important;
+}
+
+/* ========================================= */
+/*   Premium Landing (index2) – Visual Identity   */
+/* ========================================= */
+
+/* Hero: subtle gradient background */
+.index2 .banner .overlay {
+  background-image: linear-gradient(135deg, var(--lp-deep-blue) 0%, var(--lp-cement) 100%);
+  opacity: 0.92;
+}
+.index2 .banner .overlay1 {
+  opacity: 0.4;
+}
+
+/* Primary buttons: gold accent, dark text */
+.index2 .btn-primary,
+.index2 .btn-secondary {
+  background-color: var(--lp-gold) !important;
+  color: #111 !important;
+  border: none !important;
+  box-shadow: none;
+}
+.index2 .btn-primary:hover,
+.index2 .btn-secondary:hover {
+  background-color: var(--lp-gold-hover) !important;
+  color: #111 !important;
+  box-shadow: none;
+}
+
+/* Header & primary surfaces: deep blue */
+.index2 header {
+  background-color: var(--lp-deep-blue) !important;
+}
+.index2 .header-logo-wrap {
+  background-color: var(--lp-deep-blue);
+}
+.index2 .bg-primary {
+  background-color: var(--lp-deep-blue) !important;
+}
+.index2 .border-primary {
+  border-color: var(--lp-gold) !important;
+}
+.index2 .header-nav .navbar-nav .nav-link:hover,
+.index2 header .header-btn .nav-link:hover {
+  color: var(--lp-gold) !important;
+}
+
+/* Pricing: normal cards white, highlighted plan dark blue + gold */
+.index2 .price > .pricing-title {
+  background-color: var(--lp-deep-blue) !important;
+}
+.index2 .price .pricing-body .pricing-box .pricing-title.bg-grey {
+  background-color: var(--lp-light) !important;
+  color: var(--lp-graphite) !important;
+}
+.index2 .price .pricing-body .pricing-box .pricing-title.bg-primary {
+  background-color: var(--lp-deep-blue) !important;
+  color: #fff !important;
+}
+.index2 .price .pricing-body .pricing-box {
+  background: #fff;
+  border: 1px solid var(--lp-light);
+  box-shadow: 0 2px 12px rgba(15, 42, 71, 0.08);
+}
+.index2 .price .pricing-body .pricing-box .pricing-info {
+  background: #fff !important;
+}
+.index2 .price .pricing-body .pricing-box.border-primary {
+  background: var(--lp-deep-blue);
+  border-color: var(--lp-gold);
+  box-shadow: 0 4px 20px rgba(15, 42, 71, 0.2);
+}
+.index2 .price .pricing-body .pricing-box.border-primary .pricing-info {
+  background: var(--lp-light) !important;
+}
+.index2 .price .pricing-body .pricing-box.border-primary .pricing-title {
+  background: var(--lp-deep-blue) !important;
+  color: #fff !important;
+}
+.index2 .price .pricing-body .pricing-box.border-primary .btn-primary {
+  background-color: var(--lp-gold) !important;
+  color: #111 !important;
+}
+.index2 .price .pricing-body .pricing-box.border-primary .btn-primary:hover {
+  background-color: var(--lp-gold-hover) !important;
+}
+.index2 .price .pricing-body .price-amount .h5 {
+  font-size: 1.25rem;
+}
+.index2 .price .pricing-body .price-amount .h1 {
+  font-size: 2.75rem;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+.index2 .price .pricing-body .secondary {
+  color: var(--lp-gold) !important;
+}
+.index2 .price .pricing-body .pricing-info .small {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--lp-graphite);
+}
+
+/* Typography: stronger H1, lighter subtitles, more section spacing */
+.index2 .banner h1,
+.index2 .banner .headline {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+  font-weight: 800;
+}
+.index2 .banner h5 {
+  font-weight: 500;
+  opacity: 0.95;
+  font-size: 1.1rem;
+}
+.index2 section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.index2 .feature,
+.index2 .about,
+.index2 .achievement,
+.index2 .service,
+.index2 .price,
+.index2 .testimonial1,
+.index2 .stat {
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
+}
+
+/* Cleaner look: reduce shadows and heavy borders */
+.index2 .feature-box {
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: none;
+  background: rgba(0, 0, 0, 0.2);
+}
+.index2 .feature .feature-banner {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+.index2 .primary {
+  color: var(--lp-gold) !important;
+}
+.index2 .banner .dynamic-text.primary,
+.index2 .banner .dynamic-wrapper .primary {
+  color: var(--lp-gold) !important;
+}
+
+/* Achievement & Stat: deep blue / cement for consistency */
+.index2 .achievement {
+  background-image: linear-gradient(90deg, var(--lp-deep-blue) 0%, var(--lp-cement) 100%);
+}
+.index2 .stat.bg-secondary {
+  background-color: var(--lp-cement) !important;
+}
+
+/* Contact CTA strip */
+.index2 .contact-qoute.bg-primary {
+  background-color: var(--lp-deep-blue) !important;
+}
+.index2 .btn-white1 {
+  background-color: var(--lp-gold) !important;
+  color: #111 !important;
+}
+.index2 .btn-white1:hover {
+  background-color: var(--lp-gold-hover) !important;
+  color: #111 !important;
+}
+
+/* Mobile hero: better spacing and CTA visibility */
+@media (max-width: 991px) {
+  .index2 .banner .banner-content {
+    padding: 1.5rem 0;
+  }
+  .index2 .banner .banner-content-inner h1 {
+    margin-bottom: 1rem !important;
+  }
+  .index2 .banner .banner-content-inner .btn-secondary {
+    margin-top: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .index2 .banner .banner-content-inner p {
+    margin-bottom: 1.25rem !important;
+  }
+  /* Evita texto dinâmico sobrepor o parágrafo no mobile */
+  .index2 .banner .flip-animation .dynamic-wrapper {
+    min-height: 2.8em;
+    margin-bottom: 1.5rem !important;
+    position: relative;
+  }
+  .index2 .banner .flip-animation .dynamic-text {
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+  .index2 header {
+    background-color: var(--lp-deep-blue) !important;
+  }
+  .index2 .header-logo-wrap {
+    background-color: var(--lp-deep-blue);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
