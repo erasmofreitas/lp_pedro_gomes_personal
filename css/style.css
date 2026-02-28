@@ -2376,6 +2376,10 @@ footer .footer-bottom .social-link a i:hover {
 .pricing-hero.pricing-hero-dieta::before {
   background-image: url('../image/treino_dieta.jpg');
 }
+/* Bloco Consulta Premium: background próprio */
+.pricing-hero.pricing-hero-premium::before {
+  background-image: url('../image/premium.png');
+}
 .pricing-hero::after {
   content: '';
   position: absolute;
