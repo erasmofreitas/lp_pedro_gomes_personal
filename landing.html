@@ -53,7 +53,6 @@
   body.index2 .achievement,
   body.index2 .service,
   body.index2 .contact-qoute,
-  body.index2 .price,
   body.index2 .testimonial1,
   body.index2 .stat {
     position: relative;
@@ -67,7 +66,6 @@
   body.index2 .achievement::before,
   body.index2 .service::before,
   body.index2 .contact-qoute::before,
-  body.index2 .price::before,
   body.index2 .testimonial1::before,
   body.index2 .stat::before {
     content: '';
@@ -80,8 +78,6 @@
   body.index2 .achievement .container,
   body.index2 .service .container,
   body.index2 .contact-qoute .container,
-  body.index2 .price .pricing-title,
-  body.index2 .price .pricing-body,
   body.index2 .testimonial1 .container,
   body.index2 .stat .container {
     position: relative;
@@ -109,9 +105,6 @@
   body.index2 .contact-qoute .white,
   body.index2 .contact-qoute h3,
   body.index2 .contact-qoute p,
-  body.index2 .price .pricing-title .white,
-  body.index2 .price .pricing-title h2,
-  body.index2 .price .pricing-title h6,
   body.index2 .testimonial1 .white,
   body.index2 .testimonial1 .testimonial-top p,
   body.index2 .testimonial1 .testimonial-bottom p,
@@ -133,7 +126,6 @@
   body.index2 .service .service-box .primary,
   body.index2 .service .service-box h3,
   body.index2 .contact-qoute .primary,
-  body.index2 .price .pricing-title .primary,
   body.index2 .testimonial1 .testimonial-box .primary,
   body.index2 .testimonial1 .testimonial-bottom h4,
   body.index2 .stat .secondary,
@@ -161,6 +153,11 @@
   }
   /* Links no footer da página e links gerais nas seções escuras */
   body.index2 .feature#tecnologia a:not(.btn-primary):not(.btn-secondary),
+  /* Sobre: parágrafos justificados no bloco "Quem é o Prof." */
+  body.index2 .about .about-right p {
+    text-align: justify;
+  }
+
   body.index2 .about .about-right a:not(.btn-primary),
   body.index2 .achievement a:not(.btn-primary),
   body.index2 .service a:not(.btn-primary),
@@ -172,7 +169,7 @@
     display: block;
     width: auto;
     height: auto;
-    max-height: 92px;
+    max-height: 120px;
     max-width: 100%;
     object-fit: contain;
     object-position: center;
@@ -201,7 +198,7 @@
     width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
-    max-height: 160px !important;
+    max-height: 250px !important;
     object-fit: contain !important;
     object-position: center !important;
   }
@@ -220,7 +217,7 @@
     width: 100% !important;
     height: 100% !important;
     max-height: none !important;
-    object-fit: contain !important;
+    object-fit: unset !important;
     object-position: center !important;
   }
 
@@ -560,130 +557,174 @@
   </section>
   <!-- Qoute Section Ends -->
 
-  <!-- Pricing Section Starts -->
-  <section class="price pt-0" id="precos">
-    <div class="pricing-title pt-8 pb-10 bg-secondary">
-      <div class="container">
-        <div class="pricing-title-inner w-lg-50 m-auto mb-5 text-center">
-          <h6 class="white mb-3 text-uppercase fw-medium">Planos</h6>
-          <h2 class="white mt-2 mb-3">Acesso à excelência por uma fração do valor de um personal presencial</h2>
-          <div class="border-4 border-bottom border-white m-auto" style="width: 50px;"></div>
+  <!-- Pricing Section Starts (3 blocks – glassmorphism) -->
+  <!-- BLOCK 1: Treino PRO ON -->
+  <section class="pricing-hero" id="precos">
+    <div class="container">
+      <div class="pricing-hero-inner">
+        <div class="pricing-title-block">
+          <h6>Planos</h6>
+          <h2>Treino PRO ON</h2>
+          <p class="pricing-subtitle">Treinos na plataforma e no app. Escolha a recorrência e comece agora.</p>
+        </div>
+        <div class="plan-grid cols-4">
+          <div class="plan-card">
+            <div class="plan-name">Mensal</div>
+            <div class="plan-price">
+              <span class="currency">R$</span> <span class="amount">49,90</span>
+              <span class="period d-block">/mês</span>
+            </div>
+            <ul class="plan-features">
+              <li>Treinos na plataforma e app</li>
+              <li>Vídeos e fotos dos exercícios</li>
+              <li>Suporte via mensagem</li>
+              <li>Cancele quando quiser</li>
+            </ul>
+            <button type="button" class="plan-cta js-assinar" data-offer="proon" data-cycle="mensal">Começar agora</button>
+          </div>
+          <div class="plan-card">
+            <div class="plan-name">Trimestral</div>
+            <div class="plan-price">
+              <span class="currency">R$</span> <span class="amount">39,90</span>
+              <span class="period d-block">/mês</span>
+            </div>
+            <ul class="plan-features">
+              <li>Tudo do Mensal</li>
+              <li>3 meses de acesso</li>
+              <li>Suporte via mensagem</li>
+              <li>Melhor custo-benefício</li>
+            </ul>
+            <button type="button" class="plan-cta js-assinar" data-offer="proon" data-cycle="trimestral">Começar agora</button>
+          </div>
+          <div class="plan-card">
+            <div class="plan-name">Semestral</div>
+            <div class="plan-price">
+              <span class="currency">R$</span> <span class="amount">34,90</span>
+              <span class="period d-block">/mês</span>
+            </div>
+            <ul class="plan-features">
+              <li>Tudo do Trimestral</li>
+              <li>6 meses de acesso</li>
+              <li>Suporte via mensagem</li>
+              <li>Preço intermediário</li>
+            </ul>
+            <button type="button" class="plan-cta js-assinar" data-offer="proon" data-cycle="semestral">Começar agora</button>
+          </div>
+          <div class="plan-card is-featured">
+            <span class="plan-badge">MELHOR VALOR</span>
+            <div class="plan-name">Anual</div>
+            <div class="plan-price">
+              <span class="currency">R$</span> <span class="amount">29,90</span>
+              <span class="period d-block">/mês</span>
+            </div>
+            <ul class="plan-features">
+              <li>Tudo do Semestral</li>
+              <li>12 meses de acesso</li>
+              <li>Menor preço por mês</li>
+              <li>Compromisso com seu resultado</li>
+            </ul>
+            <button type="button" class="plan-cta js-assinar" data-offer="proon" data-cycle="anual">Começar agora</button>
+          </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="pricing-body" style="margin-top: -128px;">
-      <div class="container">
-        <div class="pricing-title-bottom">
-          <div class="row gx-lg-5 gy-4">
-            <!-- Offer 1: Treino PRO ON -->
-            <div class="col-lg-4 col-md-6">
-              <div class="pricing-box border border-4 border-primary-light p-3 text-center h-100 d-flex flex-column">
-                <div class="pricing-image mb-3">
-                  <img src="image/people-in-gym-2022-01-21-21-45-45-utc.jpg" alt="Treino PRO ON">
-                </div>
-                <div class="pricing-title bg-grey py-3">
-                  <h4 class="mb-0">Treino PRO ON</h4>
-                </div>
-                <div class="pricing-info bg-white mt-auto">
-                  <ul class="mx-4 mb-4 list-unstyled">
-                    <li class="d-flex justify-content-between align-items-center mb-2">
-                      <div>
-                        <strong>Mensal</strong>
-                        <div class="small">R$ 49,90 / mês</div>
-                      </div>
-                      <button class="btn-primary rounded-0" data-offer="proon" data-cycle="mensal">Assinar</button>
-                    </li>
-                    <li class="d-flex justify-content-between align-items-center mb-2">
-                      <div>
-                        <strong>Trimestral</strong>
-                        <div class="small">R$ 39,90 / mês</div>
-                      </div>
-                      <button class="btn-primary rounded-0" data-offer="proon" data-cycle="trimestral">Assinar</button>
-                    </li>
-                    <li class="d-flex justify-content-between align-items-center mb-2">
-                      <div>
-                        <strong>Semestral</strong>
-                        <div class="small">R$ 34,90 / mês</div>
-                      </div>
-                      <button class="btn-primary rounded-0" data-offer="proon" data-cycle="semestral">Assinar</button>
-                    </li>
-                    <li class="d-flex justify-content-between align-items-center">
-                      <div>
-                        <strong>Anual</strong>
-                        <div class="small">R$ 29,90 / mês</div>
-                      </div>
-                      <button class="btn-primary rounded-0" data-offer="proon" data-cycle="anual">Assinar</button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+  <!-- BLOCK 2: Treino PRO ON + Plano Alimentar PRO -->
+  <section class="pricing-hero">
+    <div class="container">
+      <div class="pricing-hero-inner">
+        <div class="pricing-title-block">
+          <h6>Planos</h6>
+          <h2>Treino PRO ON + Plano Alimentar PRO</h2>
+          <p class="pricing-subtitle">Treino + nutrição. Acompanhamento completo para resultados mais rápidos.</p>
+        </div>
+        <div class="plan-grid cols-4">
+          <div class="plan-card">
+            <div class="plan-name">Mensal</div>
+            <div class="plan-price">
+              <span class="currency">R$</span> <span class="amount">89,90</span>
+              <span class="period d-block">/mês</span>
             </div>
-
-            <!-- Offer 2: Treino PRO ON + Plano Alimentar PRO -->
-            <div class="col-lg-4 col-md-6">
-              <div class="pricing-box border border-4 border-primary p-3 text-center h-100 d-flex flex-column">
-                <div class="pricing-image mb-3">
-                  <img src="image/people-in-gym-2022-01-21-21-45-41-utc.jpg" alt="Treino PRO ON + Plano Alimentar PRO">
-                </div>
-                <div class="pricing-title bg-primary py-3">
-                  <h4 class="mb-0 white">Treino PRO ON + Plano Alimentar PRO</h4>
-                </div>
-                <div class="pricing-info bg-white mt-auto">
-                  <ul class="mx-4 mb-4 list-unstyled">
-                    <li class="d-flex justify-content-between align-items-center mb-2">
-                      <div>
-                        <strong>Mensal</strong>
-                        <div class="small">R$ 89,90 / mês</div>
-                      </div>
-                      <button class="btn-primary rounded-0" data-offer="proon_dieta" data-cycle="mensal">Assinar</button>
-                    </li>
-                    <li class="d-flex justify-content-between align-items-center mb-2">
-                      <div>
-                        <strong>Trimestral</strong>
-                        <div class="small">R$ 74,90 / mês</div>
-                      </div>
-                      <button class="btn-primary rounded-0" data-offer="proon_dieta" data-cycle="trimestral">Assinar</button>
-                    </li>
-                    <li class="d-flex justify-content-between align-items-center mb-2">
-                      <div>
-                        <strong>Semestral</strong>
-                        <div class="small">R$ 69,90 / mês</div>
-                      </div>
-                      <button class="btn-primary rounded-0" data-offer="proon_dieta" data-cycle="semestral">Assinar</button>
-                    </li>
-                    <li class="d-flex justify-content-between align-items-center">
-                      <div>
-                        <strong>Anual</strong>
-                        <div class="small">R$ 59,90 / mês</div>
-                      </div>
-                      <button class="btn-primary rounded-0" data-offer="proon_dieta" data-cycle="anual">Assinar</button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+            <ul class="plan-features">
+              <li>Treino + plano alimentar</li>
+              <li>Nutricionistas Brasil, EUA e Europa</li>
+              <li>Suporte via mensagem</li>
+              <li>Cancele quando quiser</li>
+            </ul>
+            <button type="button" class="plan-cta js-assinar" data-offer="proon_dieta" data-cycle="mensal">Começar agora</button>
+          </div>
+          <div class="plan-card">
+            <div class="plan-name">Trimestral</div>
+            <div class="plan-price">
+              <span class="currency">R$</span> <span class="amount">74,90</span>
+              <span class="period d-block">/mês</span>
             </div>
-
-            <!-- Offer 3: Consulta Premium PRO -->
-            <div class="col-lg-4 col-md-6">
-              <div class="pricing-box border border-4 border-primary-light p-3 text-center h-100 d-flex flex-column">
-                <div class="pricing-image mb-3">
-                  <img src="image/people-in-gym-2022-01-21-21-58-08-utc.jpg" alt="Consulta Premium PRO">
-                </div>
-                <div class="pricing-title bg-grey py-3">
-                  <h4 class="mb-0">Consultoria Premium</h4>
-                </div>
-                <div class="pricing-info bg-white mt-auto">
-                  <div class="price-amount py-5" style="line-height: 1;">
-                    <span class="h5 fw-bold secondary d-flex justify-content-center gap-1 mb-0">R$<span class="h1 fw-bold mb-0" style="line-height: .8;">990</span>,00<span class="d-block small">/mês</span></span>
-                  </div>
-                  <p class="mx-4 mb-4">Exclusividade total: consulta em videochamada comigo e com a nutricionista Dra. Vitoria Morais. Cruzamos seus dados metabólicos, biomecânicos e de rotina para desenhar, a quatro mãos, um plano infalível. Inclui consulta de retorno para avaliar sua evolução e otimizar resultados.</p>
-                  <a href="https://wa.me/?text=Olá%20gostaria%20de%20solicitar%20minha%20vaga%20na%20Consultoria%20Premium%20-%20por%20favor%20entre%20em%20contato." target="_blank" rel="noopener" class="btn-primary mb-2 rounded-0">Solicitar minha vaga</a>
-                  <p class="small">*Não direciona para checkout. Atendimento via WhatsApp.</p>
-                </div>
-              </div>
+            <ul class="plan-features">
+              <li>Tudo do Mensal</li>
+              <li>3 meses de acesso</li>
+              <li>Suporte via mensagem</li>
+              <li>Melhor custo-benefício</li>
+            </ul>
+            <button type="button" class="plan-cta js-assinar" data-offer="proon_dieta" data-cycle="trimestral">Começar agora</button>
+          </div>
+          <div class="plan-card">
+            <div class="plan-name">Semestral</div>
+            <div class="plan-price">
+              <span class="currency">R$</span> <span class="amount">69,90</span>
+              <span class="period d-block">/mês</span>
             </div>
+            <ul class="plan-features">
+              <li>Tudo do Trimestral</li>
+              <li>6 meses de acesso</li>
+              <li>Suporte via mensagem</li>
+              <li>Preço intermediário</li>
+            </ul>
+            <button type="button" class="plan-cta js-assinar" data-offer="proon_dieta" data-cycle="semestral">Começar agora</button>
+          </div>
+          <div class="plan-card is-featured">
+            <span class="plan-badge">MELHOR VALOR</span>
+            <div class="plan-name">Anual</div>
+            <div class="plan-price">
+              <span class="currency">R$</span> <span class="amount">59,90</span>
+              <span class="period d-block">/mês</span>
+            </div>
+            <ul class="plan-features">
+              <li>Tudo do Semestral</li>
+              <li>12 meses de acesso</li>
+              <li>Menor preço por mês</li>
+              <li>Compromisso com seu resultado</li>
+            </ul>
+            <button type="button" class="plan-cta js-assinar" data-offer="proon_dieta" data-cycle="anual">Começar agora</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- BLOCK 3: Consulta Premium PRO -->
+  <section class="pricing-hero">
+    <div class="container">
+      <div class="pricing-hero-inner">
+        <div class="pricing-title-block">
+          <h6>Consultoria</h6>
+          <h2>Consulta Premium PRO</h2>
+          <p class="pricing-subtitle">Exclusividade total: videochamada com o Prof. Pedro e nutricionista para um plano sob medida.</p>
+        </div>
+        <div class="plan-grid plan-grid-single">
+          <div class="plan-card is-featured">
+            <div class="plan-name">Consulta Premium PRO</div>
+            <div class="plan-price">
+              <span class="currency">R$</span> <span class="amount">990,00</span>
+              <span class="period d-block">/mês</span>
+            </div>
+            <ul class="plan-features">
+              <li>Videochamada com Prof. Pedro Gomes</li>
+              <li>Consulta com Dra. Vitoria Morais (nutrição)</li>
+              <li>Plano cruzado: metabolismo, biomecânica e rotina</li>
+              <li>Consulta de retorno para evolução</li>
+            </ul>
+            <a href="https://wa.me/55SEUNUMEROAQUI?text=Ol%C3%A1%2C%20quero%20solicitar%20uma%20vaga%20na%20Consulta%20Premium%20PRO.%20Pode%20me%20explicar%20como%20funciona%3F" class="plan-cta" target="_blank" rel="noopener noreferrer">Solicitar minha vaga</a>
           </div>
         </div>
       </div>
