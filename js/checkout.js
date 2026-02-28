@@ -89,12 +89,14 @@ const CHECKOUT = {
 
     // Modal buttons
     const btnBrazil = document.getElementById('btn-brazil');
-    const btnAbroad = document.getElementById('btn-abroad');
+    const btnUsa = document.getElementById('btn-usa');
+    const btnEuropa = document.getElementById('btn-europa');
     const overlay = document.getElementById('checkout-overlay');
     const closeBtn = document.getElementById('checkout-close');
 
     if (btnBrazil) btnBrazil.addEventListener('click', function () { proceed('br'); });
-    if (btnAbroad) btnAbroad.addEventListener('click', function () { proceed('int'); });
+    if (btnUsa) btnUsa.addEventListener('click', function () { proceed('us'); });
+    if (btnEuropa) btnEuropa.addEventListener('click', function () { proceed('eu'); });
     if (overlay) overlay.addEventListener('click', closeModal);
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
