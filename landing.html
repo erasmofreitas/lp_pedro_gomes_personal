@@ -31,6 +31,41 @@
   /* Botão do header: texto em uma linha só */
   .header-cta-btn { white-space: nowrap; }
 
+  /* Banner "Quer emagrecer...": mesmo fundo da seção Tecnologia */
+  body.index2 .banner {
+    position: relative;
+    background-image: url('image/fundo_alteres.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  body.index2 .banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 42, 71, 0.35);
+    pointer-events: none;
+  }
+  /* Overlay do banner: equilíbrio para a imagem aparecer sem dominar */
+  body.index2 .banner .overlay {
+    opacity: 0.4 !important;
+    background: rgba(15, 42, 71, 0.45) !important;
+    background-image: none !important;
+  }
+  body.index2 .banner .overlay1 {
+    opacity: 0.15 !important;
+  }
+  body.index2 .banner .banner-slider1 img {
+    opacity: 0;
+  }
+  body.index2 .banner .banner-content {
+    position: relative;
+    z-index: 2;
+  }
+  body.index2 .banner .banner-content-inner {
+    padding-top: 1.5rem;
+  }
+
   /* Seção Tecnologia: background com imagem de teste */
   body.index2 .feature#tecnologia {
     background-image: url('image/fundo_alteres.jpg');
@@ -38,15 +73,16 @@
     background-position: center;
     background-repeat: no-repeat;
   }
-  /* Overlay leve para legibilidade do texto (opcional – ajuste a opacidade se precisar) */
+  /* Overlay leve para legibilidade – opacidade reduzida para a imagem aparecer mais */
   body.index2 .feature#tecnologia::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(15, 42, 71, 0.5);
+    background: rgba(15, 42, 71, 0.3);
     pointer-events: none;
   }
   body.index2 .feature#tecnologia .container { position: relative; z-index: 1; }
+  body.index2 .feature#tecnologia .feature-intro-spacing { padding-top: 1.5rem; }
 
   /* Mesmo modelo de background + overlay para as seções abaixo da Tecnologia */
   body.index2 .about,
@@ -71,7 +107,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(15, 42, 71, 0.5);
+    background: rgba(15, 42, 71, 0.3);
     pointer-events: none;
   }
   body.index2 .about .container,
@@ -354,7 +390,7 @@
   <section class="feature p-0 position-relative" id="tecnologia">
     <div class="container">
       <div class="feature-inner">
-        <div class="text-center mb-5 white feature-intro" style="margin-bottom: 3.5rem !important; position: relative; z-index: 2;">
+        <div class="text-center mb-5 white feature-intro feature-intro-spacing" style="margin-bottom: 3.5rem !important; position: relative; z-index: 2;">
           <h6 class="primary mb-2 text-uppercase fw-medium">A tecnologia a favor do seu resultado</h6>
           <h2 class="white mb-2">Chega de papel amassado e dúvidas</h2>
           <p class="mb-4">Ninguém merece ficar perdido na academia. Unimos ciência e tecnologia na nossa Plataforma e Aplicativo Exclusivo:</p>
