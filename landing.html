@@ -31,13 +31,13 @@
 
   /* Abaixo da logo: Atendimento + bandeiras, bem próximo da logo */
   .header-attend {
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: 500;
     white-space: nowrap;
     margin-top: 0.2rem;
   }
   .header-attend .header-attend-text { color: rgba(255,255,255,0.95); }
-  .header-attend .header-attend-flags { font-size: 0.95rem; letter-spacing: 0.12em; }
+  .header-attend .header-attend-flags { font-size: 1.1rem; letter-spacing: 0.12em; }
 
   /* Botão do header: centralizado e chamativo */
   .header-cta-btn { white-space: nowrap; }
@@ -398,8 +398,8 @@
   body.index2 footer .overlay { background-image: none !important; }
   body.index2 .footer-contact-links { justify-content: flex-start !important; }
   body.index2 .footer-top-right { text-align: left !important; justify-content: flex-start !important; }
-  .header-attend { font-size: 0.75rem; }
-  .header-attend .header-attend-flags { font-size: 0.85rem; }
+  .header-attend { font-size: 0.95rem; }
+  .header-attend .header-attend-flags { font-size: 1rem; }
   /* Mobile: logo full-bleed */
   .header-logo-wrap {
     width: 100vw !important;
@@ -444,6 +444,31 @@
     justify-content: center;
     min-height: 55px;
   }
+  @media (max-width: 991px) {
+    body.index2 .about .about-right { text-align: left !important; }
+    body.index2 .about .about-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+    body.index2 .about .about-bottom ul {
+      gap: 0.5rem !important;
+      align-items: flex-start;
+      justify-content: flex-start;
+      width: 100%;
+    }
+    body.index2 .about .about-bottom ul li:last-child { text-align: left; }
+    body.index2 .about .about-bottom ul li:last-child .fst-italic { text-align: left; }
+    body.index2 .about .about-bottom ul li:last-child p { text-align: left; }
+    body.index2 .about .about-bottom > a.btn-primary {
+      width: auto !important;
+      display: block !important;
+      align-self: center;
+      margin-top: 1rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 
   body{ overflow-x:hidden; }
   }
@@ -464,12 +489,11 @@
                 </a>
               </div>
               <div class="header-attend text-center">
-                <span class="header-attend-text white">Atendimento</span>
+                <span class="header-attend-text white">ATENDIMENTO: </span>
                 <span class="header-attend-flags" aria-hidden="true">🇧🇷 🇺🇸 🇪🇺</span>
               </div>
-              <div class="text-center mt-2 d-flex flex-wrap justify-content-center gap-2">
+              <div class="text-center mt-2">
                 <a href="#precos" class="btn-primary header-cta-btn header-cta-pulse">Clique aqui e conheça os planos</a>
-                <a href="#plano-treino-trimestral" class="btn-primary header-cta-btn header-cta-pulse">Melhor Plano</a>
               </div>
             </div>
           </div>
@@ -689,7 +713,7 @@
                   </li>
                   <li>
                     <p class="primary mb-0 fw-bold h5">Prof. Pedro Gomes</p>
-                    <span class="fst-italic">Medicina Esportiva · Traumato-Ortopédica · Fisiologia · <span class="about-cref-nowrap">CREF Goiás: 012612</span></span>
+                    <span class="fst-italic d-block">Medicina Esportiva<br>Traumato-Ortopédica<br>Fisiologia<br><span class="about-cref-nowrap">CREF Goiás: 012612</span></span>
                   </li>
                 </ul>
                 <a href="#precos" class="btn-primary rounded-0">Ver planos</a>
@@ -812,7 +836,7 @@
             </ul>
             <button type="button" class="plan-cta js-assinar" data-offer="proon" data-cycle="semestral">Começar agora</button>
           </div>
-          <div class="plan-card">
+          <div class="plan-card plan-card-anual">
             <span class="plan-badge">MELHOR VALOR</span>
             <div class="plan-name">Anual</div>
             <div class="plan-price">
@@ -884,7 +908,7 @@
             </ul>
             <button type="button" class="plan-cta js-assinar" data-offer="proon_dieta" data-cycle="semestral">Começar agora</button>
           </div>
-          <div class="plan-card">
+          <div class="plan-card plan-card-anual">
             <span class="plan-badge">MELHOR VALOR</span>
             <div class="plan-name">Anual</div>
             <div class="plan-price">
