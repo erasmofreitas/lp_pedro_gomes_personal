@@ -64,6 +64,8 @@
     animation: header-cta-pulse 1.2s ease-in-out infinite;
   }
 
+  /* Header sempre acima do banner (evita "Quer emagrecer..." sobrepor) */
+  body.index2 header { z-index: 1030 !important; }
   /* Banner "Quer emagrecer...": mesmo fundo da seção Tecnologia; sem sobrepor o header */
   body.index2 .banner {
     position: relative;
@@ -93,24 +95,41 @@
     opacity: 0;
   }
   body.index2 .banner .banner-content {
-    position: relative;
+    position: absolute;
+    top: 54%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 2;
   }
   body.index2 .banner .banner-content-inner {
-    padding-top: 1.5rem;
+    padding-top: 2.5rem;
+    margin-top: 1rem;
   }
   body.index2 .banner .banner-content-inner h5 {
     margin-bottom: 1.25rem;
   }
-  /* Menos espaço abaixo do botão "Quero Começar": banner mais baixo */
+  /* Altura do banner: espaço para todo o conteúdo (texto, botão, relógio, vagas) */
   body.index2 .banner .banner-slider1,
   body.index2 .banner .banner-slider1 img {
-    height: 480px !important;
-    min-height: 480px;
+    height: 680px !important;
+    min-height: 680px;
   }
   body.index2 .banner .banner-content-inner {
-    padding-bottom: 0.25rem;
+    padding-bottom: 1rem;
   }
+  /* Countdown e vagas no banner */
+  .banner-countdown { position: relative; z-index: 2; }
+  .countdown-timer { font-variant-numeric: tabular-nums; }
+  .countdown-item {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(201, 166, 70, 0.5);
+    border-radius: 0.35rem;
+    padding: 0.4rem 0.65rem;
+    min-width: 3rem;
+    text-align: center;
+  }
+  .countdown-num { display: block; font-size: 1.25rem; font-weight: 700; color: #C9A646; line-height: 1.2; }
+  .countdown-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.9; }
 
   /* Seção Tecnologia: background com imagem de teste */
   body.index2 .feature#tecnologia {
@@ -133,8 +152,9 @@
   body.index2 .service#como-funciona .container { padding-top: 0 !important; padding-bottom: 0 !important; }
   body.index2 .service#como-funciona .service-body { margin-bottom: 0 !important; }
   body.index2 section.about#sobre { padding-top: 0 !important; }
-  body.index2 .about#sobre .container { padding-top: 0 !important; }
-  body.index2 .about .about-photo-circle { margin-top: 0.5rem; }
+  body.index2 .about#sobre .container { padding-top: 1.25rem !important; }
+  body.index2 .about .about-photo-circle { margin-top: 2rem; }
+  body.index2 .about .about-left { position: relative; z-index: 1; }
   body.index2 .achievement { padding-top: 0 !important; }
   body.index2 .achievement .achievement-inner { padding-top: 0 !important; }
   body.index2 .achievement .achievement-image { margin-top: 0; }
@@ -373,6 +393,9 @@
   .about .about-cref-nowrap { white-space: nowrap; }
 
   @media (max-width: 991px) {
+  body.index2 .banner .overlay1,
+  body.index2 .about .overlay,
+  body.index2 footer .overlay { background-image: none !important; }
   body.index2 .footer-contact-links { justify-content: flex-start !important; }
   body.index2 .footer-top-right { text-align: left !important; justify-content: flex-start !important; }
   .header-attend { font-size: 0.75rem; }
@@ -444,8 +467,9 @@
                 <span class="header-attend-text white">Atendimento</span>
                 <span class="header-attend-flags" aria-hidden="true">🇧🇷 🇺🇸 🇪🇺</span>
               </div>
-              <div class="text-center mt-2">
+              <div class="text-center mt-2 d-flex flex-wrap justify-content-center gap-2">
                 <a href="#precos" class="btn-primary header-cta-btn header-cta-pulse">Clique aqui e conheça os planos</a>
+                <a href="#plano-treino-trimestral" class="btn-primary header-cta-btn header-cta-pulse">Melhor Plano</a>
               </div>
             </div>
           </div>
@@ -511,6 +535,16 @@
             </h1>
           <p class="mb-4">Acesso a acompanhamento de alto nível por uma fração do valor de um personal presencial. Resultados reais, com ciência e suporte na palma da sua mão.</p>
           <a href="#precos" class="btn-secondary me-2 rounded-0">Quero Começar</a>
+          <div class="banner-countdown mt-4 pt-3">
+            <p class="white small mb-2 opacity-90">Oferta por tempo limitado — termina em:</p>
+            <div class="countdown-timer d-flex justify-content-center gap-2 flex-wrap" id="countdown">
+              <div class="countdown-item"><span class="countdown-num" id="cd-days">00</span><span class="countdown-label">dias</span></div>
+              <div class="countdown-item"><span class="countdown-num" id="cd-hours">00</span><span class="countdown-label">horas</span></div>
+              <div class="countdown-item"><span class="countdown-num" id="cd-mins">00</span><span class="countdown-label">min</span></div>
+              <div class="countdown-item"><span class="countdown-num" id="cd-secs">00</span><span class="countdown-label">seg</span></div>
+            </div>
+            <p class="white mt-3 mb-0 fw-medium"><span class="primary" id="vagas-num">12</span> vagas restantes para esta turma</p>
+          </div>
         </div>
       </div>
     </div>
@@ -749,7 +783,7 @@
             </ul>
             <button type="button" class="plan-cta js-assinar" data-offer="proon" data-cycle="mensal">Começar agora</button>
           </div>
-          <div class="plan-card is-featured">
+          <div class="plan-card is-featured" id="plano-treino-trimestral">
             <span class="plan-badge plan-badge-pulse">MAIS VENDIDO</span>
             <div class="plan-name">Trimestral</div>
             <div class="plan-price">
@@ -1142,5 +1176,33 @@
   <script src="js/plugin.js"></script>
   <script src="js/checkout.js"></script>
   <script src="js/main.js"></script>
+  <script>
+  (function() {
+    var endDate = new Date();
+    endDate.setDate(endDate.getDate() + 7);
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+    function update() {
+      var now = new Date();
+      var d = endDate - now;
+      if (d <= 0) {
+        document.getElementById('cd-days').textContent = '00';
+        document.getElementById('cd-hours').textContent = '00';
+        document.getElementById('cd-mins').textContent = '00';
+        document.getElementById('cd-secs').textContent = '00';
+        return;
+      }
+      var days = Math.floor(d / 86400000);
+      var hours = Math.floor((d % 86400000) / 3600000);
+      var mins = Math.floor((d % 3600000) / 60000);
+      var secs = Math.floor((d % 60000) / 1000);
+      document.getElementById('cd-days').textContent = pad(days);
+      document.getElementById('cd-hours').textContent = pad(hours);
+      document.getElementById('cd-mins').textContent = pad(mins);
+      document.getElementById('cd-secs').textContent = pad(secs);
+    }
+    update();
+    setInterval(update, 1000);
+  })();
+  </script>
 </body>
 </html>
