@@ -39,8 +39,22 @@
   .header-attend .header-attend-text { color: rgba(255,255,255,0.95); }
   .header-attend .header-attend-flags { font-size: 0.95rem; letter-spacing: 0.12em; }
 
-  /* Botão do header: texto em uma linha só */
+  /* Botão do header: centralizado e chamativo */
   .header-cta-btn { white-space: nowrap; }
+  .header-cta-pulse {
+    animation: header-cta-pulse 1.2s ease-in-out infinite;
+    display: inline-block;
+  }
+  @keyframes header-cta-pulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(201, 166, 70, 0.5);
+      transform: scale(1);
+    }
+    50% {
+      box-shadow: 0 0 20px 6px rgba(201, 166, 70, 0.35);
+      transform: scale(1.03);
+    }
+  }
 
   /* Banner "Quer emagrecer...": mesmo fundo da seção Tecnologia */
   body.index2 .banner {
@@ -344,11 +358,14 @@
                 <span class="header-attend-text white">Atendimento</span>
                 <span class="header-attend-flags" aria-hidden="true">🇧🇷 🇺🇸 🇪🇺</span>
               </div>
+              <div class="text-center mt-2">
+                <a href="#precos" class="btn-primary header-cta-btn header-cta-pulse">Clique aqui e conheça os planos</a>
+              </div>
             </div>
           </div>
           <div class="col-lg-9">
             <div class="header-right">
-              <div class="header-right-bottom d-flex align-items-center justify-content-end gap-5">
+              <div class="header-right-bottom d-flex align-items-center justify-content-center justify-content-lg-end gap-5">
                 <div class="header-nav header-nav-menu" id="header-nav-menu">
                   <div class="header-nav-inner">
                     <div class="header-nav">
@@ -371,13 +388,6 @@
                     </div>
                     <div id="slicknav-mobile"></div>
                   </div>
-                </div>
-                <div class="header-btn">
-                  <ul class="d-flex dropdown align-items-center gap-2">
-                    <li>
-                      <a href="#precos" class="btn-primary header-cta-btn">Conheça nossa consultoria especializada</a>
-                    </li>
-                  </ul>
                 </div>
               </div>
             </div>
