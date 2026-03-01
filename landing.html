@@ -55,10 +55,19 @@
       transform: scale(1.03);
     }
   }
+  /* Título "Passo a passo" com moldura pulsante igual ao botão do header */
+  .service-title-pulse {
+    display: inline-block;
+    padding: 0.6rem 1.25rem;
+    border: 2px solid rgba(201, 166, 70, 0.9);
+    border-radius: 0.35rem;
+    animation: header-cta-pulse 1.2s ease-in-out infinite;
+  }
 
-  /* Banner "Quer emagrecer...": mesmo fundo da seção Tecnologia */
+  /* Banner "Quer emagrecer...": mesmo fundo da seção Tecnologia; sem sobrepor o header */
   body.index2 .banner {
     position: relative;
+    margin-top: 0 !important;
     background-image: url('image/fundo_alteres.jpg');
     background-size: cover;
     background-position: center;
@@ -93,6 +102,15 @@
   body.index2 .banner .banner-content-inner h5 {
     margin-bottom: 1.25rem;
   }
+  /* Menos espaço abaixo do botão "Quero Começar": banner mais baixo */
+  body.index2 .banner .banner-slider1,
+  body.index2 .banner .banner-slider1 img {
+    height: 480px !important;
+    min-height: 480px;
+  }
+  body.index2 .banner .banner-content-inner {
+    padding-bottom: 0.25rem;
+  }
 
   /* Seção Tecnologia: background com imagem de teste */
   body.index2 .feature#tecnologia {
@@ -111,6 +129,23 @@
   }
   body.index2 .feature#tecnologia .container { position: relative; z-index: 1; }
   body.index2 .feature#tecnologia .feature-intro-spacing { padding-top: 1.5rem; }
+  body.index2 .feature#tecnologia { padding-bottom: 1.5rem !important; }
+  body.index2 .service#como-funciona .container { padding-top: 0 !important; padding-bottom: 0 !important; }
+  body.index2 .service#como-funciona .service-body { margin-bottom: 0 !important; }
+  body.index2 section.about#sobre { padding-top: 0 !important; }
+  body.index2 .about#sobre .container { padding-top: 0 !important; }
+  body.index2 .about .about-photo-circle { margin-top: 0.5rem; }
+  body.index2 .achievement { padding-top: 0 !important; }
+  body.index2 .achievement .achievement-inner { padding-top: 0 !important; }
+  body.index2 .achievement .achievement-image { margin-top: 0; }
+  body.index2 .achievement .achievement-left { padding-top: 0; }
+  body.index2 .achievement .achievement-inner { padding-bottom: 0 !important; }
+  body.index2 .achievement .achievement-right { margin-bottom: 0 !important; }
+  body.index2 .achievement { padding-bottom: 0 !important; }
+  body.index2 .achievement .achievement-row-tight { --bs-gutter-x: 1rem; }
+  @media (max-width: 991px) {
+    body.index2 .achievement .achievement-row-tight { --bs-gutter-y: 0.75rem; }
+  }
 
   /* Mesmo modelo de background + overlay para as seções abaixo da Tecnologia */
   body.index2 .about,
@@ -197,6 +232,14 @@
     color: #E0BB5A !important;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   }
+  /* Nossas Estatísticas: remove todo espaço acima; imagem da equipe bem maior */
+  body.index2 section.stat { padding-top: 0 !important; margin-top: -2rem !important; }
+  body.index2 .stat .container { padding-top: 0 !important; }
+  body.index2 .stat .stat-inner { padding-top: 0 !important; }
+  body.index2 .stat .stat-left { padding-top: 0 !important; margin-top: 0 !important; }
+  body.index2 .stat .circle-container { margin-top: 0 !important; padding-top: 0 !important; }
+  body.index2 .stat .stat-right { padding: 0 !important; }
+  body.index2 .stat .stat-team-img { width: 100% !important; max-width: 780px !important; }
   /* Caixas (feature, service) com fundo escuro e texto legível */
   body.index2 .feature#tecnologia .feature-box,
   body.index2 .service .service-box {
@@ -206,6 +249,10 @@
   body.index2 .service .service-box.bg-primary {
     background: rgba(15, 42, 71, 0.9) !important;
   }
+  /* Depoimentos: remove espaço acima */
+  body.index2 .testimonial1#depoimentos { padding-top: 0 !important; }
+  body.index2 #depoimentos .container { padding-top: 0 !important; }
+  body.index2 #depoimentos .testimonial-inner { padding-top: 0 !important; }
   /* Depoimentos: caixa com fundo escuro para contraste */
   body.index2 .testimonial1 .testimonial-top {
     background: rgba(15, 42, 71, 0.6);
@@ -233,12 +280,38 @@
   body.index2 footer {
     background-color: #0F2A47 !important;
     background-image: none !important;
+    padding-top: 2.5rem !important;
+  }
+  body.index2 footer .container {
+    padding-top: 1.5rem !important;
   }
   body.index2 footer .overlay {
     display: none;
   }
   body.index2 .footer-copyright {
     background-color: #0F2A47 !important;
+  }
+  /* Footer: logo maior e redes sociais alinhadas */
+  body.index2 .footer-logo-img {
+    width: auto;
+    max-height: 180px;
+    object-fit: contain;
+    display: block;
+  }
+  body.index2 .footer-contact-links {
+    gap: 0.5rem;
+    max-width: 100%;
+  }
+  body.index2 .footer-contact-links li {
+    flex: 0 0 auto;
+  }
+  body.index2 .footer-social-icons {
+    gap: 1rem;
+  }
+  body.index2 .footer-social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .header-logo-img {
@@ -300,6 +373,8 @@
   .about .about-cref-nowrap { white-space: nowrap; }
 
   @media (max-width: 991px) {
+  body.index2 .footer-contact-links { justify-content: flex-start !important; }
+  body.index2 .footer-top-right { text-align: left !important; justify-content: flex-start !important; }
   .header-attend { font-size: 0.75rem; }
   .header-attend .header-attend-flags { font-size: 0.85rem; }
   /* Mobile: logo full-bleed */
@@ -493,9 +568,7 @@
     <div class="container position-relative py-8">
       <div class="service-inner">
         <div class="service-title w-lg-50 m-auto text-center mb-5">
-          <h6 class="white mb-3 text-uppercase fw-medium">O passo a passo da sua evolução</h6>
-          <h2 class="white mb-3">Nosso processo une a segurança que você precisa com o resultado que você deseja</h2>
-          <div class="border-4 border-bottom border-white m-auto" style="width: 50px;"></div>
+          <h6 class="white mb-0 text-uppercase fw-medium service-title-pulse">O passo a passo da sua evolução</h6>
         </div>
         <div class="service-body mb-6">
           <div class="row gy-4">
@@ -598,17 +671,17 @@
   <!-- Program section removed as requested -->
 
   <!-- Achievement Section Starts -->
-  <section class="achievement position-relative bg-grey" style="padding-top: 6rem;">
+  <section class="achievement position-relative bg-grey">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
       <path class="elementor-shape-fill" d="M0,6V0h1000v100L0,6z"></path>
     </svg>
     <div class="container position-relative">
       <div class="achievement-inner pb-8 pt-2 white">
-        <div class="row gx-lg-5 gy-5 align-items-center">
+        <div class="row gx-lg-5 gy-5 align-items-center achievement-row-tight">
           <div class="col-lg-5 order-2 order-lg-1">
             <div class="achievement-left">
               <div class="achievement-image mb-4 text-center">
-                <img src="image/people_active_sem_fundo.png" alt="Estilo de vida ativo" class="w-100" style="max-height: 380px; object-fit: contain; filter: drop-shadow(0 1rem 2rem rgba(0,0,0,0.5));">
+                <img src="image/people_active_sem_fundo.png" alt="Estilo de vida ativo" class="w-100 achievement-main-img" style="max-height: 520px; object-fit: contain; filter: drop-shadow(0 1rem 2rem rgba(0,0,0,0.5));">
               </div>
               <div class="achievement-stats d-flex gap-4 justify-content-center">
                 <div class="customers-stats border-dashed border-2 p-4 text-center flex-grow-1">
@@ -676,7 +749,8 @@
             </ul>
             <button type="button" class="plan-cta js-assinar" data-offer="proon" data-cycle="mensal">Começar agora</button>
           </div>
-          <div class="plan-card">
+          <div class="plan-card is-featured">
+            <span class="plan-badge plan-badge-pulse">MAIS VENDIDO</span>
             <div class="plan-name">Trimestral</div>
             <div class="plan-price">
               <span class="currency">R$</span> <span class="amount">219,90</span>
@@ -704,7 +778,7 @@
             </ul>
             <button type="button" class="plan-cta js-assinar" data-offer="proon" data-cycle="semestral">Começar agora</button>
           </div>
-          <div class="plan-card is-featured">
+          <div class="plan-card">
             <span class="plan-badge">MELHOR VALOR</span>
             <div class="plan-name">Anual</div>
             <div class="plan-price">
@@ -747,7 +821,8 @@
             </ul>
             <button type="button" class="plan-cta js-assinar" data-offer="proon_dieta" data-cycle="mensal">Começar agora</button>
           </div>
-          <div class="plan-card">
+          <div class="plan-card is-featured">
+            <span class="plan-badge plan-badge-pulse">MAIS VENDIDO</span>
             <div class="plan-name">Trimestral</div>
             <div class="plan-price">
               <span class="currency">R$</span> <span class="amount">459,90</span>
@@ -775,7 +850,7 @@
             </ul>
             <button type="button" class="plan-cta js-assinar" data-offer="proon_dieta" data-cycle="semestral">Começar agora</button>
           </div>
-          <div class="plan-card is-featured">
+          <div class="plan-card">
             <span class="plan-badge">MELHOR VALOR</span>
             <div class="plan-name">Anual</div>
             <div class="plan-price">
@@ -910,31 +985,6 @@
   </section>
   <!-- Testimonial Section Ends -->
 
-  <!-- CTA Contato (final) – estilo 4Fit -->
-  <section class="contact-qoute p-0 py-5 bg-primary" id="contato">
-    <div class="container">
-      <div class="contact-qoute-inner text-center text-lg-start">
-        <div class="row align-items-center gy-4">
-          <div class="col-lg-7">
-            <div class="contact-qoute-left">
-              <span class="title-sperator1 m-auto ms-lg-0 mb-2">
-                <span class="partner-title text-uppercase primary fw-medium white">Solicite um Orçamento</span>
-              </span>
-              <h3 class="white">TEM DÚVIDA OU QUER COMEÇAR?</h3>
-              <p class="mb-0 white">Estamos a uma mensagem de distância. Entre em contato para tirar dúvidas ou escolher seu plano.</p>
-            </div>
-          </div>
-          <div class="col-lg-5">
-            <div class="contact-qoute-right text-lg-end">
-              <a href="https://wa.me/5562992937723?text=Ol%C3%A1%20vim%20do%20site%20e%20gostaria%20de%20saber%20sobre%20a%20assessoria%20fitness%20do%20Professor%20Pedro%20Gomes" class="btn-white1" target="_blank" rel="noopener noreferrer">Contato</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Qoute Section Ends -->
-
   <!-- Shop section removed as requested -->
 
   <!-- Stat Section Starts -->
@@ -946,7 +996,7 @@
             <div class="stat-left text-center">
               <div class="circle-container mx-auto w-100 h-auto">
                 <div class="circle"></div>  
-                <img src="image/team_sem_fundo.png" alt="Equipe" class="position-relative m-auto" style="width: 85%; max-width: 420px;">
+                <img src="image/team_sem_fundo.png" alt="Equipe" class="position-relative m-auto stat-team-img" style="width: 100%; max-width: 780px;">
               </div>
             </div>
           </div>
@@ -1003,7 +1053,7 @@
                 <h4 class="white ps-3 border-start border-4 border-primary mb-4">Sobre</h4>
                 <p class="mb-2">Pedro Gomes é personal trainer especializado em treinos personalizados, reeducação alimentar e acompanhamento para resultados sustentáveis.</p>
                 <p class="mb-4 small opacity-90">Registro CREF Goiás: 012612</p>
-                <ul class="social-link d-flex align-items-center justify-content-center justify-content-md-start gap-2 mt-3">
+                <ul class="social-link d-flex align-items-center justify-content-center justify-content-md-start gap-3 mt-3 footer-social-icons">
                   <li>
                     <a href="https://www.facebook.com/pedrogomesprof/" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fa fa-facebook text rounded-circle" aria-hidden="true"></i></a>
                   </li>
@@ -1035,12 +1085,12 @@
           <div class="row align-items-center gy-4 text-center text-lg-start">
             <div class="col-lg-3">
               <div class="footer-top-left">
-                <a href="landing.html"><img src="image/logo_sem_fundo.png" alt="Pedro Gomes - Treinador Pessoal" class="m-auto" style="max-height: 92px; width: auto; object-fit: contain;"></a>
+                <a href="landing.html" class="d-inline-block"><img src="image/logo_sem_fundo.png" alt="Pedro Gomes - Treinador Pessoal" class="m-auto footer-logo-img"></a>
               </div>
             </div>
             <div class="col-lg-7">
               <div class="footer-top-right">
-                <ul class="d-flex flex-wrap align-items-center justify-content-center white">
+                <ul class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-between white footer-contact-links">
                   <li class="me-3 pe-3 border-end border-light my-1"><a href="https://wa.me/5562992937723?text=Ol%C3%A1%20vim%20do%20site%20e%20gostaria%20de%20saber%20sobre%20a%20assessoria%20fitness%20do%20Professor%20Pedro%20Gomes" target="_blank" rel="noopener noreferrer" class="white text-decoration-none"><i class="fa fa-whatsapp me-2" aria-hidden="true"></i>WhatsApp</a></li>
                   <li class="me-3 pe-3 border-end border-light my-1"><a href="mailto:comercial@professorpedrogomes.com" class="white text-decoration-none"><i class="fa fa-envelope me-2" aria-hidden="true"></i>comercial@professorpedrogomes.com</a></li>
                   <li class="my-1"><a href="https://www.instagram.com/pedrogomesprof" target="_blank" rel="noopener noreferrer" class="white text-decoration-none"><i class="fa fa-instagram me-2" aria-hidden="true"></i>@pedrogomesprof</a></li>
