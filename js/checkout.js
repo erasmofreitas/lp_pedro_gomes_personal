@@ -47,6 +47,17 @@ const CHECKOUT = {
       return;
     }
 
+    const offer = selectedPlan.offer;
+    const cycle = selectedPlan.cycle;
+
+    // Consulta Premium: abre o diálogo de país e depois redireciona para WhatsApp
+    if (offer === 'premium') {
+      closeModal();
+      const msg = encodeURIComponent('Olá, vim do site e gostaria de garantir minha vaga exclusiva na Consulta Premium PRO. Pode me explicar como funciona?');
+      window.open('https://wa.me/5562992937723?text=' + msg, '_blank', 'noopener,noreferrer');
+      return;
+    }
+
     // Persist selected plan for checkout pages
     try {
       localStorage.setItem('pending_plan', JSON.stringify(selectedPlan));
@@ -55,15 +66,11 @@ const CHECKOUT = {
     }
 
     // Try to use configured checkout URL if present
-    const offer = selectedPlan.offer;
-    const cycle = selectedPlan.cycle;
     const configured = (CHECKOUT.urls && CHECKOUT.urls[offer] && CHECKOUT.urls[offer][cycle]) || '';
 
     if (configured) {
-      // In case different checkout for residents vs abroad is needed, this object may be extended.
       window.location.href = configured;
     } else {
-      // Fallback: navigate to a generic checkout with query params (replace with real path if available)
       const params = new URLSearchParams({
         offer: offer,
         cycle: cycle,
