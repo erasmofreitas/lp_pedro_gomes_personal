@@ -28,6 +28,23 @@
   /* Logo header: logo_sem_fundo.png — desktop */
   .header-logo-wrap { display: block; }
   .header-logo-link { display: block; }
+
+  /* Faixa do topo: atendimento Brasil e exterior */
+  .top-bar-attend {
+    background-color: #0F2A47;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  .top-bar-attend .container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .top-bar-attend .top-bar-text { color: rgba(255,255,255,0.95); white-space: nowrap; }
+  .top-bar-attend .top-bar-flags { font-size: 1rem; letter-spacing: 0.15em; white-space: nowrap; flex-shrink: 0; }
+
   /* Botão do header: texto em uma linha só */
   .header-cta-btn { white-space: nowrap; }
 
@@ -237,6 +254,8 @@
   }
 
   @media (max-width: 991px) {
+  .top-bar-attend { font-size: 0.75rem; }
+  .top-bar-attend .top-bar-flags { font-size: 0.9rem; }
   /* Mobile: logo full-bleed */
   .header-logo-wrap {
     width: 100vw !important;
@@ -301,6 +320,14 @@
 </head>
 <body class="index2">
   
+  <!-- Faixa topo: atendimento Brasil e exterior -->
+  <div class="top-bar-attend py-2 text-center white">
+    <div class="container">
+      <span class="top-bar-text">Atendimento para brasileiros e estrangeiros</span>
+      <span class="top-bar-flags ms-2" aria-hidden="true">🇧🇷 🇺🇸 🇪🇺</span>
+    </div>
+  </div>
+
   <!-- Header Section Starts -->
   <header class="py-3 position-relative z-2">
     <div class="container">
