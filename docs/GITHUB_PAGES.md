@@ -36,7 +36,7 @@ git push origin main
 
 - Depois de alguns minutos, a LP fica disponível em:
   - **https://erasmofreitas.github.io/lp_pedro_gomes_personal/**
-- Quem acessar essa URL ou a raiz do projeto será redirecionado para **landing.html** (sua LP).
+- Quem acessar essa URL ou a raiz do projeto verá o **index.html** (sua LP).
 
 ## 4. Testar em dispositivos
 
@@ -46,6 +46,6 @@ git push origin main
 
 ## Observações
 
-- **index.html** na raiz redireciona para **landing.html**; assim a LP é a página inicial.
-- Qualquer alteração em **landing.html**, **css/** ou **image/** basta ser commitada e enviada com `git push`; o GitHub Pages atualiza sozinho (pode levar 1–2 minutos).
+- **index.html** na raiz é a própria LP (página inicial).
+- Qualquer alteração em **index.html**, **css/** ou **image/** basta ser commitada e enviada com `git push`; o GitHub Pages atualiza sozinho (pode levar 1–2 minutos).
 - No plano gratuito, o Pages exige repositório público (veja a seção acima).

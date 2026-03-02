@@ -1,13 +1,1241 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zxx">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="0; url=landing.html">
+
   <title>Pedro Gomes – Treinador Pessoal</title>
-  <script>window.location.replace("landing.html");</script>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="image/logo.png">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!--CSS Plugins-->
+  <link rel="stylesheet" href="css/plugin.css">
+  <!--Custom CSS-->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Font Awesome 4.7.0 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>html { scroll-behavior: smooth; }
+  /* Corrige capitalize do tema: títulos exibem como escrito; .text-uppercase continua em maiúsculas */
+  body.index2 h1, body.index2 h2, body.index2 h3, body.index2 h4, body.index2 h5, body.index2 h6 { text-transform: none; }
+  body.index2 .text-uppercase { text-transform: uppercase !important; }
+  /* Header: deep blue (premium palette – overridden by style.css variables) */
+  body.index2 header { background-color: #0F2A47 !important; }
+  /* Logo header: logo_sem_fundo.png — desktop */
+  .header-logo-wrap { display: block; }
+  .header-logo-link { display: block; }
+
+  /* Abaixo da logo: Atendimento + bandeiras, bem próximo da logo */
+  .header-attend {
+    font-size: 1rem;
+    font-weight: 500;
+    white-space: nowrap;
+    margin-top: 0.2rem;
+  }
+  .header-attend .header-attend-text { color: rgba(255,255,255,0.95); }
+  .header-attend .header-attend-flags { font-size: 1.1rem; letter-spacing: 0.12em; }
+
+  /* Botão do header: centralizado e chamativo */
+  .header-cta-btn { white-space: nowrap; }
+  .header-cta-pulse {
+    animation: header-cta-pulse 1.2s ease-in-out infinite;
+    display: inline-block;
+  }
+  @keyframes header-cta-pulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(201, 166, 70, 0.5);
+      transform: scale(1);
+    }
+    50% {
+      box-shadow: 0 0 20px 6px rgba(201, 166, 70, 0.35);
+      transform: scale(1.03);
+    }
+  }
+  /* Título "Passo a passo" com moldura pulsante igual ao botão do header */
+  .service-title-pulse {
+    display: inline-block;
+    padding: 0.6rem 1.25rem;
+    border: 2px solid rgba(201, 166, 70, 0.9);
+    border-radius: 0.35rem;
+    animation: header-cta-pulse 1.2s ease-in-out infinite;
+  }
+
+  /* Header sempre acima do banner (evita "Quer emagrecer..." sobrepor) */
+  body.index2 header { z-index: 1030 !important; }
+  /* Banner "Quer emagrecer...": mesmo fundo da seção Tecnologia; sem sobrepor o header */
+  body.index2 .banner {
+    position: relative;
+    margin-top: 0 !important;
+    background-image: url('image/fundo_alteres.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  body.index2 .banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 42, 71, 0.35);
+    pointer-events: none;
+  }
+  /* Overlay do banner: equilíbrio para a imagem aparecer sem dominar */
+  body.index2 .banner .overlay {
+    opacity: 0.4 !important;
+    background: rgba(15, 42, 71, 0.45) !important;
+    background-image: none !important;
+  }
+  body.index2 .banner .overlay1 {
+    opacity: 0.15 !important;
+  }
+  body.index2 .banner .banner-slider1 img {
+    opacity: 0;
+  }
+  body.index2 .banner .banner-content {
+    position: absolute;
+    top: 54%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+  body.index2 .banner .banner-content-inner {
+    padding-top: 2.5rem;
+    margin-top: 1rem;
+  }
+  body.index2 .banner .banner-content-inner h5 {
+    margin-bottom: 1.25rem;
+  }
+  /* Altura do banner: espaço para todo o conteúdo (texto, botão, relógio, vagas) */
+  body.index2 .banner .banner-slider1,
+  body.index2 .banner .banner-slider1 img {
+    height: 680px !important;
+    min-height: 680px;
+  }
+  body.index2 .banner .banner-content-inner {
+    padding-bottom: 1rem;
+  }
+  /* Countdown e vagas no banner */
+  .banner-countdown { position: relative; z-index: 2; }
+  .countdown-timer { font-variant-numeric: tabular-nums; }
+  .countdown-item {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(201, 166, 70, 0.5);
+    border-radius: 0.35rem;
+    padding: 0.4rem 0.65rem;
+    min-width: 3rem;
+    text-align: center;
+  }
+  .countdown-num { display: block; font-size: 1.25rem; font-weight: 700; color: #C9A646; line-height: 1.2; }
+  .countdown-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.9; }
+
+  /* Seção Tecnologia: background com imagem de teste */
+  body.index2 .feature#tecnologia {
+    background-image: url('image/fundo_alteres.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  /* Overlay leve para legibilidade – opacidade reduzida para a imagem aparecer mais */
+  body.index2 .feature#tecnologia::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 42, 71, 0.3);
+    pointer-events: none;
+  }
+  body.index2 .feature#tecnologia .container { position: relative; z-index: 1; }
+  body.index2 .feature#tecnologia .feature-intro-spacing { padding-top: 1.5rem; }
+  body.index2 .feature#tecnologia { padding-bottom: 1.5rem !important; }
+  body.index2 .service#como-funciona .container { padding-top: 0 !important; padding-bottom: 0 !important; }
+  body.index2 .service#como-funciona .service-body { margin-bottom: 0 !important; }
+  body.index2 section.about#sobre { padding-top: 0 !important; }
+  body.index2 .about#sobre .container { padding-top: 1.25rem !important; }
+  body.index2 .about .about-photo-circle { margin-top: 2rem; }
+  body.index2 .about .about-left { position: relative; z-index: 1; }
+  body.index2 .achievement { padding-top: 0 !important; }
+  body.index2 .achievement .achievement-inner { padding-top: 0 !important; }
+  body.index2 .achievement .achievement-image { margin-top: 0; }
+  body.index2 .achievement .achievement-left { padding-top: 0; }
+  body.index2 .achievement .achievement-inner { padding-bottom: 0 !important; }
+  body.index2 .achievement .achievement-right { margin-bottom: 0 !important; }
+  body.index2 .achievement { padding-bottom: 0 !important; }
+  body.index2 .achievement .achievement-row-tight { --bs-gutter-x: 1rem; }
+  @media (max-width: 991px) {
+    body.index2 .achievement .achievement-row-tight { --bs-gutter-y: 0.75rem; }
+  }
+
+  /* Mesmo modelo de background + overlay para as seções abaixo da Tecnologia */
+  body.index2 .about,
+  body.index2 .achievement,
+  body.index2 .service,
+  body.index2 .contact-qoute,
+  body.index2 .testimonial1,
+  body.index2 .stat {
+    position: relative;
+    background-color: transparent !important;
+    background-image: url('image/fundo_alteres.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  body.index2 .about::before,
+  body.index2 .achievement::before,
+  body.index2 .service::before,
+  body.index2 .contact-qoute::before,
+  body.index2 .testimonial1::before,
+  body.index2 .stat::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 42, 71, 0.3);
+    pointer-events: none;
+  }
+  body.index2 .about .container,
+  body.index2 .achievement .container,
+  body.index2 .service .container,
+  body.index2 .contact-qoute .container,
+  body.index2 .testimonial1 .container,
+  body.index2 .stat .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Cores e legibilidade nas seções com background + overlay */
+  body.index2 .feature#tecnologia .white,
+  body.index2 .about .white,
+  body.index2 .about .about-right,
+  body.index2 .about .about-right p,
+  body.index2 .about .about-right h2,
+  body.index2 .about .about-right h6,
+  body.index2 .about .about-right .fw-bold,
+  body.index2 .about .about-right .fst-italic,
+  body.index2 .about .about-right .small,
+  body.index2 .achievement .white,
+  body.index2 .achievement p,
+  body.index2 .achievement h2,
+  body.index2 .achievement h6,
+  body.index2 .service .white,
+  body.index2 .service .service-box,
+  body.index2 .service .service-box p,
+  body.index2 .service .service-box h3,
+  body.index2 .contact-qoute .white,
+  body.index2 .contact-qoute h3,
+  body.index2 .contact-qoute p,
+  body.index2 .testimonial1 .white,
+  body.index2 .testimonial1 .testimonial-top p,
+  body.index2 .testimonial1 .testimonial-bottom p,
+  body.index2 .stat .white,
+  body.index2 .stat p,
+  body.index2 .stat h2,
+  body.index2 .stat h6 {
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  /* Destaque dourado (accent) nas seções com overlay */
+  body.index2 .feature#tecnologia .primary,
+  body.index2 .feature#tecnologia .feature-box .primary,
+  body.index2 .feature#tecnologia .feature-box h3,
+  body.index2 .about .about-right .primary,
+  body.index2 .about .about-right h6.primary,
+  body.index2 .achievement .primary,
+  body.index2 .service .primary,
+  body.index2 .service .service-box .primary,
+  body.index2 .service .service-box h3,
+  body.index2 .contact-qoute .primary,
+  body.index2 .testimonial1 .testimonial-box .primary,
+  body.index2 .testimonial1 .testimonial-bottom h4,
+  body.index2 .stat .secondary,
+  body.index2 .stat .progress-num {
+    color: #E0BB5A !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  }
+  /* Nossas Estatísticas: remove todo espaço acima; imagem da equipe bem maior */
+  body.index2 section.stat { padding-top: 0 !important; margin-top: -2rem !important; }
+  body.index2 .stat .container { padding-top: 0 !important; }
+  body.index2 .stat .stat-inner { padding-top: 0 !important; }
+  body.index2 .stat .stat-left { padding-top: 0 !important; margin-top: 0 !important; }
+  body.index2 .stat .circle-container { margin-top: 0 !important; padding-top: 0 !important; }
+  body.index2 .stat .stat-right { padding: 0 !important; }
+  body.index2 .stat .stat-team-img { width: 100% !important; max-width: 780px !important; }
+  /* Caixas (feature, service) com fundo escuro e texto legível */
+  body.index2 .feature#tecnologia .feature-box,
+  body.index2 .service .service-box {
+    background: rgba(15, 42, 71, 0.75) !important;
+    border-color: rgba(224, 187, 90, 0.5) !important;
+  }
+  body.index2 .service .service-box.bg-primary {
+    background: rgba(15, 42, 71, 0.9) !important;
+  }
+  /* Depoimentos: remove espaço acima */
+  body.index2 .testimonial1#depoimentos { padding-top: 0 !important; }
+  body.index2 #depoimentos .container { padding-top: 0 !important; }
+  body.index2 #depoimentos .testimonial-inner { padding-top: 0 !important; }
+  /* Depoimentos: caixa com fundo escuro para contraste */
+  body.index2 .testimonial1 .testimonial-top {
+    background: rgba(15, 42, 71, 0.6);
+    border-color: rgba(224, 187, 90, 0.4);
+  }
+  /* Sobre: badge "4.200+ alunos" */
+  body.index2 .about .bg-primary {
+    background-color: rgba(15, 42, 71, 0.9) !important;
+  }
+  /* Links no footer da página e links gerais nas seções escuras */
+  body.index2 .feature#tecnologia a:not(.btn-primary):not(.btn-secondary),
+  /* Sobre: parágrafos justificados no bloco "Quem é o Prof." */
+  body.index2 .about .about-right p {
+    text-align: justify;
+  }
+
+  body.index2 .about .about-right a:not(.btn-primary),
+  body.index2 .achievement a:not(.btn-primary),
+  body.index2 .service a:not(.btn-primary),
+  body.index2 .contact-qoute a:not(.btn-white1) {
+    color: #E0BB5A !important;
+  }
+
+  /* Rodapé: toda a parte inferior com o mesmo fundo do header */
+  body.index2 footer {
+    background-color: #0F2A47 !important;
+    background-image: none !important;
+    padding-top: 2.5rem !important;
+  }
+  body.index2 footer .container {
+    padding-top: 1.5rem !important;
+  }
+  body.index2 footer .overlay {
+    display: none;
+  }
+  body.index2 .footer-copyright {
+    background-color: #0F2A47 !important;
+  }
+  /* Footer: logo maior e redes sociais alinhadas */
+  body.index2 .footer-logo-img {
+    width: auto;
+    max-height: 180px;
+    object-fit: contain;
+    display: block;
+  }
+  body.index2 .footer-contact-links {
+    gap: 0.5rem;
+    max-width: 100%;
+  }
+  body.index2 .footer-contact-links li {
+    flex: 0 0 auto;
+  }
+  body.index2 .footer-social-icons {
+    gap: 1rem;
+  }
+  body.index2 .footer-social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header-logo-img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-height: 120px;
+    max-width: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  /* Sobre: foto redonda em desktop e mobile */
+  .about .about-photo-circle {
+    width: 320px;
+    height: 320px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid rgba(255,255,255,0.9);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    position: relative;
+    background: transparent !important;
+  }
+  .about .about-photo-circle .about-photo-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center 20%;
+    border-radius: 50%;
+  }
+
+  /* Mini foto ao lado de "Prof. Pedro Gomes": mesmo estilo circular */
+  .about .about-mini-photo {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+    border: 2px solid rgba(255,255,255,0.9);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  }
+  .about .about-mini-photo .about-mini-photo-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+  /* CREF sem quebra no mobile */
+  .about .about-cref-nowrap { white-space: nowrap; }
+
+  @media (max-width: 991px) {
+  body.index2 .banner .overlay1,
+  body.index2 .about .overlay,
+  body.index2 footer .overlay { background-image: none !important; }
+  body.index2 .footer-contact-links { justify-content: flex-start !important; }
+  body.index2 .footer-top-right { text-align: left !important; justify-content: flex-start !important; }
+  .header-attend { font-size: 0.95rem; }
+  .header-attend .header-attend-flags { font-size: 1rem; }
+  /* Mobile: logo full-bleed */
+  .header-logo-wrap {
+    width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    padding: 0.5rem 0;
+    box-sizing: border-box;
+    background-color: #0F2A47; /* faixa do logo: deep blue */
+  }
+  header {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    background-color: #0F2A47 !important; /* mobile header: deep blue */
+  }
+  header .container { padding-left: 0 !important; padding-right: 0 !important; }
+  .header-logo-link { display: block !important; width: 100% !important; }
+
+  /* a imagem vira “faixa” */
+  .header-logo-img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: 250px !important;
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+
+  /* Botão do header no mobile: fonte e padding menores para caber em uma linha */
+  .header-cta-btn {
+    font-size: 0.8rem !important;
+    padding-left: 0.6rem !important;
+    padding-right: 0.6rem !important;
+  }
+
+  /* Sobre: texto "Medicina Esportiva..." alinhado com a mini foto no mobile */
+  body.index2 .about .about-bottom ul {
+    align-items: center;
+  }
+  body.index2 .about .about-bottom ul li:last-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 55px;
+  }
+  @media (max-width: 991px) {
+    body.index2 .about .about-right { text-align: left !important; }
+    body.index2 .about .about-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+    body.index2 .about .about-bottom ul {
+      gap: 0.5rem !important;
+      align-items: flex-start;
+      justify-content: flex-start;
+      width: 100%;
+    }
+    body.index2 .about .about-bottom ul li:last-child { text-align: left; }
+    body.index2 .about .about-bottom ul li:last-child .fst-italic { text-align: left; }
+    body.index2 .about .about-bottom ul li:last-child p { text-align: left; }
+    body.index2 .about .about-bottom > a.btn-primary {
+      width: auto !important;
+      display: block !important;
+      align-self: center;
+      margin-top: 1rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  body{ overflow-x:hidden; }
+  }
+  /* Modal checkout: destaque do país detectado por IP */
+  #checkout-modal .checkout-country-detected {
+    border: 2px solid #0F2A47 !important;
+    box-shadow: 0 0 0 2px rgba(15, 42, 71, 0.3);
+  }
+  #checkout-modal .checkout-detected-hint {
+    font-size: 0.85em;
+    opacity: 0.9;
+    margin-left: 0.15em;
+  }
+</style>
 </head>
-<body>
-  <p>Redirecionando… <a href="landing.html">Clique aqui se não for redirecionado</a>.</p>
+<body class="index2">
+
+  <!-- Header Section Starts -->
+  <header class="py-3 position-relative z-2">
+    <div class="container">
+      <div class="header-inner">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-12 col-xl-3 col-md-5">
+            <div class="header-left text-center text-lg-start">
+              <div class="header-logo-wrap">
+                <a href="#inicio" class="header-logo-link d-block">
+                  <img src="image/logo_sem_fundo.png" alt="Pedro Gomes - Treinador Pessoal" class="header-logo-img m-auto">
+                </a>
+              </div>
+              <div class="header-attend text-center">
+                <span class="header-attend-text white">ATENDIMENTO: </span>
+                <span class="header-attend-flags" aria-hidden="true">🇧🇷 🇺🇸 🇪🇺</span>
+              </div>
+              <div class="text-center mt-2">
+                <a href="#precos" class="btn-primary header-cta-btn header-cta-pulse">Clique aqui e conheça os planos</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-9">
+            <div class="header-right">
+              <div class="header-right-bottom d-flex align-items-center justify-content-center justify-content-lg-end gap-5">
+                <div class="header-nav header-nav-menu" id="header-nav-menu">
+                  <div class="header-nav-inner">
+                    <div class="header-nav">
+                      <div class="navbar-collapse " id="bs-example-navbar-collapse-1">
+                        <ul class="navbar-nav flex-row align-items-center" id="responsive-menu">
+                          <li class="nav-item">
+                            <a class="nav-link text fw-medium white active text-uppercase" href="#inicio">Início</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link text fw-medium text-uppercase" href="#como-funciona">Como funciona</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link text fw-medium text-uppercase" href="#precos">Planos</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link text fw-medium text-uppercase" href="#depoimentos">Depoimentos</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div id="slicknav-mobile"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Header Section Ends -->
+
+  <!-- Banner Section Starts -->
+  <section class="banner position-relative rounded-0 p-0" id="inicio">
+    <div class="banner-slider1">
+      <div>
+        <img src="image/gym-workout-morning-2022-11-02-04-12-58-utc.jpg" alt="gym workout">
+      </div>
+      <div>
+        <img src="image/fitness-gym-2021-11-02-02-16-08-utc1.jpg" alt="gym workout">
+      </div>
+      <div>
+        <img src="image/the-female-athlete-training-hard-in-the-gym-fitne-2022-02-02-04-52-15-utc1.jpg" alt="gym workout">
+      </div>
+    </div>
+    <div class="overlay rounded-0"></div>
+    <div class="overlay overlay1 rounded-0"></div>
+    <div class="banner-content position-absolute top-50 start-50 translate-middle w-xl-50 w-md-75 w-100 m-auto">
+      <div class="container">
+          <div class="banner-content-inner text-center white">
+          <h5 class="white">Quer emagrecer e ganhar massa muscular, mas não quer pagar uma fortuna em um personal?</h5>
+          <h1 class="white text-uppercase mb-4 headline flip-animation">A tecnologia 
+           <span class="dynamic-wrapper">
+              <span class="dynamic-text active primary">muda o jogo</span>
+              <span class="dynamic-text primary">a seu favor</span>
+            </span>
+            </h1>
+          <p class="mb-4">Acesso a acompanhamento de alto nível por uma fração do valor de um personal presencial. Resultados reais, com ciência e suporte na palma da sua mão.</p>
+          <a href="#precos" class="btn-secondary me-2 rounded-0">Quero Começar</a>
+          <div class="banner-countdown mt-4 pt-3">
+            <p class="white small mb-2 opacity-90">Oferta por tempo limitado — termina em:</p>
+            <div class="countdown-timer d-flex justify-content-center gap-2 flex-wrap" id="countdown">
+              <div class="countdown-item"><span class="countdown-num" id="cd-days">00</span><span class="countdown-label">dias</span></div>
+              <div class="countdown-item"><span class="countdown-num" id="cd-hours">00</span><span class="countdown-label">horas</span></div>
+              <div class="countdown-item"><span class="countdown-num" id="cd-mins">00</span><span class="countdown-label">min</span></div>
+              <div class="countdown-item"><span class="countdown-num" id="cd-secs">00</span><span class="countdown-label">seg</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Banner Section Ends -->
+
+  <!-- Feature Section Starts -->
+  <section class="feature p-0 position-relative" id="tecnologia">
+    <div class="container">
+      <div class="feature-inner">
+        <div class="text-center mb-5 white feature-intro feature-intro-spacing" style="margin-bottom: 3.5rem !important; position: relative; z-index: 2;">
+          <h6 class="primary mb-2 text-uppercase fw-medium">A tecnologia a favor do seu resultado</h6>
+          <h2 class="white mb-2">Chega de papel amassado e dúvidas</h2>
+          <p class="mb-4">Ninguém merece ficar perdido na academia. Unimos ciência e tecnologia na nossa Plataforma e Aplicativo Exclusivo:</p>
+          <a href="#precos" class="btn-primary rounded-0">Ver planos</a>
+        </div>
+        <div class="row gx-md-5 gy-5 justify-content-center">
+          <div class="col-md-6 col-lg-6">
+            <div class="feature-box border border-4 border-primary-light text-center">
+              <img src="image/Fitness-and-Gym-07.png" alt="vídeo e foto" style="height: 65px; width: 65px;">
+              <h3 class="mt-2 mb-3 primary">Você vê, você faz</h3>
+              <p class="white mb-0">Cada exercício com vídeo e foto na palma da sua mão para acertar o movimento de primeira. Sem nomes estranhos.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6">
+            <div class="feature-box border border-4 border-primary-light text-center">
+              <img src="image/Fitness-and-Gym-27.png" alt="organizado" style="height: 65px; width: 65px;">
+              <h3 class="mt-2 mb-3 primary">Tudo organizado pelo sistema</h3>
+              <p class="white mb-0">Cargas, repetições e descanso detalhados na tela. A plataforma gerencia a estratégia; sua única preocupação é treinar.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6">
+            <div class="feature-box border border-4 border-primary text-center">
+              <img src="image/Fitness-and-Gym-09.png" alt="suporte" style="height: 65px; width: 65px;">
+              <h3 class="mt-2 mb-3 primary">Tô aqui com você</h3>
+              <p class="white mb-0">Dúvida ou incômodo? Nunca mais treine sozinho — estamos a uma mensagem de distância direto pelo app.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6">
+            <div class="feature-box border border-4 border-primary-light text-center">
+              <img src="image/Fitness-and-Gym-08.png" alt="equipe" style="height: 65px; width: 65px;">
+              <h3 class="mt-2 mb-3 primary">Equipe Multidisciplinar</h3>
+              <p class="white mb-0">Profissionais de Educação Física de excelência nos bastidores para otimizar seus treinos e oferecer suporte rápido.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Feature Section Ends -->
+
+  <!-- Como funciona (Processo 1º 2º 3º 4º) – estilo 4Fit -->
+  <section class="service position-relative" id="como-funciona">
+    <div class="overlay"></div>
+    <div class="container position-relative py-8">
+      <div class="service-inner">
+        <div class="service-title w-lg-50 m-auto text-center mb-5">
+          <h6 class="white mb-0 text-uppercase fw-medium service-title-pulse">O passo a passo da sua evolução</h6>
+        </div>
+        <div class="service-body mb-6">
+          <div class="row gy-4">
+            <div class="col-lg-3 col-md-6">
+              <div class="service-box py-5 px-4 text-center bg-white bg-opacity-25 white">
+                <div class="service-icon mb-3">
+                  <span class="h2 fw-bold primary">1</span>
+                </div>
+                <div class="service-info">
+                  <h3 class="primary mb-3">O Mapeamento (Anamnese)</h3>
+                  <p class="mb-0">Você responde a um questionário simples: onde quer chegar (secar, crescer ou definir) e seu histórico. Tem dor no joelho? É iniciante? Levamos tudo em conta para um plano seguro e de rápida evolução.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 d-flex">
+              <div class="service-box py-5 px-4 text-center bg-white bg-opacity-25 white">
+                <div class="service-icon mb-3">
+                  <span class="h2 fw-bold primary">2</span>
+                </div>
+                <div class="service-info">
+                  <h3 class="primary mb-3">O Plano de Ação (Prescrição)</h3>
+                  <p class="mb-0">Eu e minha equipe desenhamos seu treino. Sem exercícios aleatórios — a combinação exata para acelerar seu metabolismo e definir seus músculos, respeitando seu tempo e rotina.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="service-box py-5 px-4 text-center bg-primary bg-opacity-25 white">
+                <div class="service-icon mb-3">
+                  <span class="h2 fw-bold white">3</span>
+                </div>
+                <div class="service-info">
+                  <h3 class="white mb-3">Treino na Mão (A Plataforma)</h3>
+                  <p class="mb-0">Tudo pronto. Acesse o aplicativo, siga o plano e veja o corpo mudar. A tecnologia e nossos especialistas cuidam de cada detalhe.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="service-box py-5 px-4 text-center bg-white bg-opacity-25 white">
+                <div class="service-icon mb-3">
+                  <span class="h2 fw-bold primary">4</span>
+                </div>
+                <div class="service-info">
+                  <h3 class="primary mb-3">O Combustível (Dieta PRO)</h3>
+                  <p class="mb-0">Para acelerar sua transformação: duas nutricionistas de alto nível (Brasil, EUA e Europa) montam sua estratégia. O treino constrói; a nutrição fornece o material exato para resultados mais rápidos.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Services Section Ends -->
+
+  <!-- About Section Starts (Seu consultor – estilo 4Fit) -->
+  <section class="about position-relative pb-6" id="sobre">
+    <div class="overlay"></div>
+    <div class="container position-relative pt-8">
+      <div class="about-inner">
+        <div class="row gx-lg-5 align-items-center gy-5">
+          <div class="col-12 col-lg-7 order-1 order-lg-1">
+            <div class="about-left me-lg-5">
+              <div class="about-images about-photo-circle text-center mb-3">
+                <img src="image/pedro_sem_fundo3.png" alt="Prof. Pedro Gomes - Treinador" class="about-photo-img shadow">
+              </div>
+              <div class="text-center py-3 px-3 bg-primary rounded">
+                <span class="h4 fw-bold white mb-0">4.200+ <span class="d-block small opacity-90">alunos no mundo</span></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-5 order-2 order-lg-2">
+            <div class="about-right text-center text-lg-start">
+              <h6 class="primary mb-3 text-uppercase fw-medium">Quem é o Prof. Pedro Gomes</h6>
+              <h2 class="ps-3 border-start border-4 border-primary mb-4">Muito prazer, sou o Prof. Pedro Gomes</h2>
+              <p>Minha atuação vai muito além do personal trainer convencional. Com Pós-Graduação em Medicina Esportiva e Traumato-Ortopédica e bagagem de docente de Fisiologia, eu não monto "fichas" — eu elaboro <strong>Protocolos de Treinamento</strong>.</p>
+              <p class="mb-3">Minha missão é aplicar a ciência com a qual já atendi a mais de 4.200 alunos ao redor do mundo: unir a segurança da traumato-ortopédica com a eficiência da medicina esportiva para que cada repetição gere resultados reais no seu corpo.</p>
+              <p class="fw-bold mb-4">Pela plataforma de treinos online, você tem acesso a esse nível de excelência por uma fração do valor de um acompanhamento presencial.</p>
+              <div class="about-bottom d-flex align-items-center justify-content-lg-between justify-content-center gap-3 flex-wrap">
+                <ul class="d-flex align-items-center gap-3">
+                  <li>
+                    <div class="about-mini-photo">
+                      <img src="image/pedro_sem_fundo.png" alt="Prof. Pedro Gomes" class="about-mini-photo-img">
+                    </div>
+                  </li>
+                  <li>
+                    <p class="primary mb-0 fw-bold h5">Prof. Pedro Gomes</p>
+                    <span class="fst-italic d-block">Medicina Esportiva<br>Traumato-Ortopédica<br>Fisiologia<br><span class="about-cref-nowrap">CREF Goiás: 012612</span></span>
+                  </li>
+                </ul>
+                <a href="#precos" class="btn-primary rounded-0">Ver planos</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- About Section Ends -->
+
+  <!-- Program section removed as requested -->
+
+  <!-- Achievement Section Starts -->
+  <section class="achievement position-relative bg-grey">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+      <path class="elementor-shape-fill" d="M0,6V0h1000v100L0,6z"></path>
+    </svg>
+    <div class="container position-relative">
+      <div class="achievement-inner pb-8 pt-2 white">
+        <div class="row gx-lg-5 gy-5 align-items-center achievement-row-tight">
+          <div class="col-lg-5 order-2 order-lg-1">
+            <div class="achievement-left">
+              <div class="achievement-image mb-4 text-center">
+                <img src="image/people_active_sem_fundo.png" alt="Estilo de vida ativo" class="w-100 achievement-main-img" style="max-height: 520px; object-fit: contain; filter: drop-shadow(0 1rem 2rem rgba(0,0,0,0.5));">
+              </div>
+              <div class="achievement-stats d-flex gap-4 justify-content-center">
+                <div class="customers-stats border-dashed border-2 p-4 text-center flex-grow-1">
+                  <span class="h2 fw-bold white"><span class="num" data-val="4200"></span> +</span>
+                  <ul class="d-flex justify-content-center gap-2 mt-1 mb-4">
+                    <li><i class="fa fa-heart secondary" aria-hidden="true"></i></li>
+                    <li><i class="fa fa-heart secondary" aria-hidden="true"></i></li>
+                    <li><i class="fa fa-heart secondary" aria-hidden="true"></i></li>
+                    <li><i class="fa fa-heart secondary" aria-hidden="true"></i></li>
+                    <li><i class="fa fa-heart secondary" aria-hidden="true"></i></li>
+                  </ul>
+                  <p class="h5 mb-0 fw-bold">Clientes Satisfeitos</p>
+                </div>
+                <div class="customers-stats border-dashed border-2 p-4 text-center flex-grow-1">
+                  <span class="h2 fw-bold white"><span class="num" data-val="4.9"></span></span>
+                  <ul class="d-flex justify-content-center gap-2 mt-1 mb-4">
+                    <li><i class="fa fa-star secondary" aria-hidden="true"></i></li>
+                    <li><i class="fa fa-star secondary" aria-hidden="true"></i></li>
+                    <li><i class="fa fa-star secondary" aria-hidden="true"></i></li>
+                    <li><i class="fa fa-star secondary" aria-hidden="true"></i></li>
+                    <li><i class="fa fa-star-half secondary" aria-hidden="true"></i></li>
+                  </ul>
+                  <p class="h5 mb-0 fw-bold">Avaliações Positivas</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7 order-1 order-lg-2">
+            <div class="achievement-right mt-5 mb-5 mb-lg-5 text-center text-lg-start white">
+              <h6 class="white mb-3 text-uppercase fw-medium">Nossas Conquistas</h6>
+              <h2 class="white ps-3 border-start border-4 border-white mb-4">Mais de 4.200 alunos ao redor do mundo</h2>
+              <p>Aplico a ciência da medicina esportiva e traumato-ortopédica para que cada repetição gere resultados reais no seu corpo.</p>
+              <p class="fw-bold fst-italic mb-0">“A tecnologia e a equipe cuidam de cada detalhe — é treino de alto nível na palma da mão.”</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Achievement Section Ends -->
+
+  <!-- Video and Teams sections removed as requested -->
+
+  <!-- Pricing Section Starts (3 blocks – glassmorphism) – após processo e conquistas, estilo 4Fit -->
+  <!-- BLOCK 1: Treino PRO ON -->
+  <section class="pricing-hero pricing-hero-treino" id="precos">
+    <div class="container">
+      <div class="pricing-hero-inner">
+        <div class="pricing-title-block">
+          <h2>Treino PRO ON</h2>
+          <p class="pricing-subtitle">Plano de tecnologia e resultados. *Plano de treinos online.</p>
+        </div>
+        <div class="plan-grid cols-4">
+          <div class="plan-card">
+            <div class="plan-name">Mensal</div>
+            <div class="plan-price">
+              <span class="currency">R$</span> <span class="amount">249,90</span>
+              <span class="period d-block">/mês</span>
+            </div>
+            <ul class="plan-features">
+              <li>Treinos na plataforma e app</li>
+              <li>Vídeos e fotos dos exercícios</li>
+              <li>Suporte via mensagem</li>
+              <li>Flexibilidade total</li>
+            </ul>
+            <button type="button" class="plan-cta js-assinar" data-offer="proon" data-cycle="mensal">Começar agora</button>
+          </div>
+          <div class="plan-card is-featured" id="plano-treino-trimestral">
+            <span class="plan-badge plan-badge-pulse">MAIS VENDIDO</span>
+            <div class="plan-name">Trimestral</div>
+            <div class="plan-price">
+              <span class="currency">R$</span> <span class="amount">219,90</span>
+              <span class="period d-block">/mês</span>
+            </div>
+            <ul class="plan-features">
+              <li>Tudo do Mensal</li>
+              <li>3 meses de acesso</li>
+              <li>Valor total: R$ 659,70</li>
+              <li>Economize R$ 30,00/mês</li>
+            </ul>
+            <button type="button" class="plan-cta js-assinar" data-offer="proon" data-cycle="trimestral">Começar agora</button>
+          </div>
+          <div class="plan-card">
+            <div class="plan-name">Semestral</div>
+            <div class="plan-price">
+              <span class="currency">R$</span> <span class="amount">199,90</span>
+              <span class="period d-block">/mês</span>
+            </div>
+            <ul class="plan-features">
+              <li>Tudo do Trimestral</li>
+              <li>6 meses de acesso</li>
+              <li>Valor total: R$ 1.199,40</li>
+              <li>Economize R$ 50,00/mês</li>
+            </ul>
+            <button type="button" class="plan-cta js-assinar" data-offer="proon" data-cycle="semestral">Começar agora</button>
+          </div>
+          <div class="plan-card plan-card-anual">
+            <span class="plan-badge">MELHOR VALOR</span>
+            <div class="plan-name">Anual</div>
+            <div class="plan-price">
+              <span class="currency">R$</span> <span class="amount">179,90</span>
+              <span class="period d-block">/mês</span>
+            </div>
+            <ul class="plan-features">
+              <li>Tudo do Semestral</li>
+              <li>12 meses de acesso</li>
+              <li>Valor total: R$ 2.158,80</li>
+              <li>Economize R$ 70,00/mês + Bônus Exclusivos</li>
+            </ul>
+            <button type="button" class="plan-cta js-assinar" data-offer="proon" data-cycle="anual">Começar agora</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCK 2: Treino PRO ON + Plano Alimentar PRO -->
+  <section class="pricing-hero pricing-hero-dieta" id="planos-treino-dieta">
+    <div class="container">
+      <div class="pricing-hero-inner">
+        <div class="pricing-title-block">
+          <h2>Treino PRO ON + Plano Alimentar PRO</h2>
+          <p class="pricing-subtitle">Plano completo de treinos e nutrição para resultados máximos. *Plano de treinos e dieta online.</p>
+        </div>
+        <div class="plan-grid cols-4">
+          <div class="plan-card">
+            <div class="plan-name">Mensal</div>
+            <div class="plan-price">
+              <span class="currency">R$</span> <span class="amount">499,90</span>
+              <span class="period d-block">/mês</span>
+            </div>
+            <ul class="plan-features">
+              <li>Treino + plano alimentar</li>
+              <li>Nutricionistas Brasil, EUA e Europa</li>
+              <li>Suporte via mensagem</li>
+              <li>Flexibilidade total</li>
+            </ul>
+            <button type="button" class="plan-cta js-assinar" data-offer="proon_dieta" data-cycle="mensal">Começar agora</button>
+          </div>
+          <div class="plan-card is-featured">
+            <span class="plan-badge plan-badge-pulse">MAIS VENDIDO</span>
+            <div class="plan-name">Trimestral</div>
+            <div class="plan-price">
+              <span class="currency">R$</span> <span class="amount">459,90</span>
+              <span class="period d-block">/mês</span>
+            </div>
+            <ul class="plan-features">
+              <li>Tudo do Mensal</li>
+              <li>3 meses de acesso</li>
+              <li>Valor total: R$ 1.379,70</li>
+              <li>Economize R$ 40,00/mês (R$ 120 total)</li>
+            </ul>
+            <button type="button" class="plan-cta js-assinar" data-offer="proon_dieta" data-cycle="trimestral">Começar agora</button>
+          </div>
+          <div class="plan-card">
+            <div class="plan-name">Semestral</div>
+            <div class="plan-price">
+              <span class="currency">R$</span> <span class="amount">439,90</span>
+              <span class="period d-block">/mês</span>
+            </div>
+            <ul class="plan-features">
+              <li>Tudo do Trimestral</li>
+              <li>6 meses de acesso</li>
+              <li>Valor total: R$ 2.639,40</li>
+              <li>Economize R$ 60,00/mês (R$ 360 total)</li>
+            </ul>
+            <button type="button" class="plan-cta js-assinar" data-offer="proon_dieta" data-cycle="semestral">Começar agora</button>
+          </div>
+          <div class="plan-card plan-card-anual">
+            <span class="plan-badge">MELHOR VALOR</span>
+            <div class="plan-name">Anual</div>
+            <div class="plan-price">
+              <span class="currency">R$</span> <span class="amount">399,90</span>
+              <span class="period d-block">/mês</span>
+            </div>
+            <ul class="plan-features">
+              <li>Tudo do Semestral</li>
+              <li>12 meses de acesso</li>
+              <li>Valor total: R$ 4.798,80</li>
+              <li>Economize R$ 100,00/mês + Bônus Exclusivos (R$ 1.200 total)</li>
+            </ul>
+            <button type="button" class="plan-cta js-assinar" data-offer="proon_dieta" data-cycle="anual">Começar agora</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCK 3: Consulta Premium PRO -->
+  <section class="pricing-hero pricing-hero-premium" id="consulta-premium">
+    <div class="container">
+      <div class="pricing-hero-inner">
+        <div class="pricing-title-block">
+          <h2>Consulta Premium PRO</h2>
+          <p class="pricing-subtitle">Professor Pedro Gomes + Dra. Vitória Morais Nutricionista — O auge da personalização.</p>
+        </div>
+        <div class="plan-grid plan-grid-single">
+          <div class="plan-card is-featured">
+            <div class="plan-name">Consulta Premium PRO</div>
+            <div class="plan-price">
+              <span class="currency">R$</span> <span class="amount">990,00</span>
+              <span class="period d-block">/mês</span>
+            </div>
+            <ul class="plan-features">
+              <li>2x Consultas de Vídeo Mensais (Ao Vivo)</li>
+              <li>Acesso Direto aos Especialistas</li>
+              <li>Análise Biomecânica em Tempo Real</li>
+              <li>Ajuste Fino Nutricional Personalizado</li>
+              <li>Inclui Treino PRO ON + Dieta PRO Completos</li>
+              <li>Suporte VIP Prioritário</li>
+            </ul>
+            <button type="button" class="plan-cta js-assinar" data-offer="premium" data-cycle="consulta">Garantir minha vaga exclusiva</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Pricing Section Ends -->
+
+  <!-- Appointment section removed as requested -->
+
+  <!-- Testimonial Section Starts -->
+  <section class="testimonial1 position-relative pt-0" id="depoimentos">
+    <div class="overlay"></div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" class="position-relative">
+      <path class="elementor-shape-fill" d="M0,6V0h1000v100L0,6z"></path>
+    </svg>
+    <div class="container position-relative pt-8">
+          <div class="testimonial-inner pt-10">
+        <div class="testiomnial-title text-center w-lg-50 m-auto mb-5">
+          <h6 class="white mb-2 text-uppercase fw-medium">Depoimentos</h6>
+          <h2 class="mt-2 mb-3 white">O que clientes dizem sobre o trabalho do Pedro Gomes</h2>
+          <div class="border-4 border-bottom border-white m-auto" style="width: 50px;"></div>
+        </div>
+        <div class="testimonial-body">
+          <div class="testimonial1-slider">
+            <div class="testimonial-box text-center mx-3">
+              <div class="testimonial-top p-5 border-dashed border-2 white">
+                <div class="testimonial-icon h2 mb-3">
+                  <i class="fa fa-quote-left primary bg-primary-light bg-opacity-25 text-center rounded-circle" aria-hidden="true"></i>
+                </div>
+                <p class="mb-4">Antes eu não acreditava que conseguiria resultados reais. Com o Pedro, perdi gordura e ganhei força.</p>
+              </div>
+              <div class="testimonial-bottom" style="margin-top: -30px;">
+                <div class="testimonial-image mb-3">
+                  <img src="image/portrait-of-personal-trainer-at-the-gym-2021-08-27-09-55-46-utc1.jpg" alt="treinador" class="rounded-circle object-fit-cover m-auto" style="height: 80px; width: 80px;">
+                </div>
+                <h4 class="primary">Mariana Costa</h4>
+                <p class="mb-0 white">Cliente</p>
+              </div>
+            </div>
+            <div class="testimonial-box text-center mx-3">
+              <div class="testimonial-top p-5 border-dashed border-2 white">
+                <div class="testimonial-icon h2 mb-3">
+                  <i class="fa fa-quote-left primary bg-primary-light bg-opacity-25 text-center rounded-circle" aria-hidden="true"></i>
+                </div>
+                <p class="mb-4">Programa eficaz e acompanhamento próximo — resultados visíveis em semanas.</p>
+              </div>
+              <div class="testimonial-bottom" style="margin-top: -30px;">
+                <div class="testimonial-image mb-3">
+                  <img src="image/beautiful-fitness-woman-in-sportswear-doing-exerci-2021-08-28-00-08-34-utc1.jpg" alt="trainer" class="rounded-circle object-fit-cover m-auto" style="height: 80px; width: 80px;">
+                </div>
+                <h4 class="primary">Rafael Souza</h4>
+                <p class="mb-0 white">Cliente</p>
+              </div>
+            </div>
+            <div class="testimonial-box text-center mx-3">
+              <div class="testimonial-top p-5 border-dashed border-2 white">
+                <div class="testimonial-icon h2 mb-3">
+                  <i class="fa fa-quote-left primary bg-primary-light bg-opacity-25 text-center rounded-circle" aria-hidden="true"></i>
+                </div>
+                <p class="mb-4">Treinos desafiadores e personalizados. Atendimento e suporte excepcionais.</p>
+              </div>
+              <div class="testimonial-bottom" style="margin-top: -30px;">
+                <div class="testimonial-image mb-3">
+                  <img src="image/trainer-helps-the-woman-to-perform-the-exercise-wi-2021-10-21-02-41-18-utc1.jpg" alt="trainer" class="rounded-circle object-fit-cover m-auto" style="height: 80px; width: 80px;">
+                </div>
+                <h4 class="primary">Ana Pereira</h4>
+                <p class="mb-0 white">Cliente</p>
+              </div>
+            </div>
+            <div class="testimonial-box text-center mx-3">
+              <div class="testimonial-top p-5 border-dashed border-2 white">
+                <div class="testimonial-icon h2 mb-3">
+                  <i class="fa fa-quote-left primary bg-primary-light bg-opacity-25 text-center rounded-circle" aria-hidden="true"></i>
+                </div>
+                <p class="mb-4">Melhorei minha postura e condicionamento em poucas semanas com os métodos do Pedro.</p>
+              </div>
+              <div class="testimonial-bottom" style="margin-top: -30px;">
+                <div class="testimonial-image mb-3">
+                  <img src="image/training-portrait-and-fitness-coach-doing-inspect-2022-12-24-04-35-50-utc1.jpg" alt="trainer" class="rounded-circle object-fit-cover m-auto" style="height: 80px; width: 80px;">
+                </div>
+                <h4 class="primary">Lucas Almeida</h4>
+                <p class="mb-0 white">Cliente</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Testimonial Section Ends -->
+
+  <!-- Shop section removed as requested -->
+
+  <!-- Stat Section Starts -->
+  <section class="stat bg-secondary py-0">
+    <div class="container">
+      <div class="stat-inner">
+        <div class="row align-items-center gy-5">
+          <div class="col-xl-5 order-2 order-xl-1">
+            <div class="stat-left text-center">
+              <div class="circle-container mx-auto w-100 h-auto">
+                <div class="circle"></div>  
+                <img src="image/team_sem_fundo.png" alt="Equipe" class="position-relative m-auto stat-team-img" style="width: 100%; max-width: 780px;">
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-7 order-1 order-xl-2">
+            <div class="stat-right white pb-lg-5 text-center text-lg-start">
+              <h6 class="mb-2 text-uppercase white fw-medium">Nossas Estatísticas</h6>
+              <h2 class="mb-4 white ps-3 border-start border-4 border-white">Trabalhamos sério para transformar vidas — veja nossos resultados</h2>
+              <p class="mb-5">Metodologia comprovada, acompanhamento individual e foco em metas reais: é assim que entregamos resultados.</p>
+              <div class="row gy-4">
+                <div class="col-md-6">
+                  <p class="secondary text-uppercase white h6">Satisfação dos Clientes</p>
+                  <div class="progress-bar-section">
+                    <div class="progress position-relative overflow-visible rounded-0" role="progressbar" aria-label="Basic example" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="height: 10px">
+                      <div class="progress-bar bg-primary position-relative overflow-visible" style="width: 90%">
+                        <div class="percentage-wrapper position-absolute p-2 bg-primary rounded-circle white d-flex align-items-center justify-content-between">
+                          <span class="progress-num" data-val="90"></span><Span>%</Span>
+                        </div>
+                      </div>
+                    </div>
+                  </div> 
+                </div>
+                <div class="col-md-6">
+                  <p class="secondary text-uppercase white h6">Suporte ao Cliente</p>
+                  <div class="progress-bar-section">
+                    <div class="progress position-relative overflow-visible rounded-0" role="progressbar" aria-label="Basic example" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="height: 10px">
+                      <div class="progress-bar bg-primary position-relative overflow-visible" style="width: 85%">
+                        <div class="percentage-wrapper position-absolute p-2 bg-primary rounded-circle white d-flex align-items-center justify-content-between">
+                          <span class="progress-num" data-val="85"></span><Span>%</Span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Stat Section Ends -->
+
+  <!-- Blog/artigos section removed as requested -->
+
+  <!-- Footer Section Starts -->  
+  <footer class="section-padding pb-0 position-relative">
+    <div class="overlay"></div>
+    <div class="container position-relative pt-8">
+      <div class="footer-inner mb-5">
+        <div class="footer-bottom white text-center text-md-start">
+          <div class="row gx-lg-5 gy-5">
+            <div class="col-lg-4 col-md-6">
+              <div class="footer-bottom-left">
+                <h4 class="white ps-3 border-start border-4 border-primary mb-4">Sobre</h4>
+                <p class="mb-2">Pedro Gomes é personal trainer especializado em treinos personalizados, reeducação alimentar e acompanhamento para resultados sustentáveis.</p>
+                <p class="mb-4 small opacity-90">Registro CREF Goiás: 012612</p>
+                <ul class="social-link d-flex align-items-center justify-content-center justify-content-md-start gap-3 mt-3 footer-social-icons">
+                  <li>
+                    <a href="https://www.facebook.com/pedrogomesprof/" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fa fa-facebook text rounded-circle" aria-hidden="true"></i></a>
+                  </li>
+                  <li>
+                    <a href="https://www.instagram.com/pedrogomesprof" target="_blank" rel="noopener noreferrer" title="Instagram @pedrogomesprof"><i class="fa fa-instagram text rounded-circle" aria-hidden="true"></i></a>
+                  </li>
+                  <li>
+                    <a href="https://wa.me/5562992937723?text=Ol%C3%A1%20vim%20do%20site%20e%20gostaria%20de%20saber%20sobre%20a%20assessoria%20fitness%20do%20Professor%20Pedro%20Gomes" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fa fa-whatsapp text rounded-circle" aria-hidden="true"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-6">
+              <div class="footer-bottom-links">
+                <h4 class="white ps-3 border-start border-4 border-primary mb-4">Links Rápidos</h4>
+                <ul>
+                  <li class="mb-3"><a href="#inicio">Início</a></li>
+                  <li class="mb-3"><a href="#sobre">Sobre</a></li>
+                  <li class="mb-3"><a href="#como-funciona">Como funciona</a></li>
+                  <li class="mb-3"><a href="#precos">Planos</a></li>
+                  <li class="mb-3"><a href="#depoimentos">Depoimentos</a></li>
+                  <li><a href="#contato">Contato</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-top mt-5 pt-4 border-top border-light">
+          <div class="row align-items-center gy-4 text-center text-lg-start">
+            <div class="col-lg-3">
+              <div class="footer-top-left">
+                <a href="index.html" class="d-inline-block"><img src="image/logo_sem_fundo.png" alt="Pedro Gomes - Treinador Pessoal" class="m-auto footer-logo-img"></a>
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <div class="footer-top-right">
+                <ul class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-between white footer-contact-links">
+                  <li class="me-3 pe-3 border-end border-light my-1"><a href="https://wa.me/5562992937723?text=Ol%C3%A1%20vim%20do%20site%20e%20gostaria%20de%20saber%20sobre%20a%20assessoria%20fitness%20do%20Professor%20Pedro%20Gomes" target="_blank" rel="noopener noreferrer" class="white text-decoration-none"><i class="fa fa-whatsapp me-2" aria-hidden="true"></i>WhatsApp</a></li>
+                  <li class="me-3 pe-3 border-end border-light my-1"><a href="mailto:comercial@professorpedrogomes.com" class="white text-decoration-none"><i class="fa fa-envelope me-2" aria-hidden="true"></i>comercial@professorpedrogomes.com</a></li>
+                  <li class="my-1"><a href="https://www.instagram.com/pedrogomesprof" target="_blank" rel="noopener noreferrer" class="white text-decoration-none"><i class="fa fa-instagram me-2" aria-hidden="true"></i>@pedrogomesprof</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-2">
+              <ul class="d-flex justify-content-center justify-content-lg-end flex-wrap">
+                <li><a href="politica-privacidade.html">Política de Privacidade</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright bg-secondary py-4 white">
+      <div class="container">
+          <div class="copyright-inner text-center white">
+          Copyright &copy; 2026 Pedro Gomes. Todos os direitos reservados.
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer Section Ends -->
+
+  <!--Back-to-top Button start-->
+  <div id="back-to-top">
+    <a href="#" class="bg-primary position-relative align-items-center border border-2 border-primary rounded-circle d-block"></a>
+  </div>
+  <!--Back-to-top Button end-->
+  <!-- Checkout modal -->
+  <div id="checkout-overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:9998;"></div>
+  <div id="checkout-modal" style="display:none; position:fixed; bottom:20px; left:50%; transform:translateX(-50%); width:calc(100% - 32px); max-width:720px; background:#fff; z-index:9999; border-radius:8px; box-shadow:0 8px 30px rgba(0,0,0,0.2);">
+    <div style="padding:18px;">
+      <div class="d-flex justify-content-end">
+        <button id="checkout-close" style="background:transparent;border:0;font-size:20px;line-height:1;cursor:pointer;">&times;</button>
+      </div>
+      <h5 class="mb-3">Para otimizar sua forma de pagamento, onde você reside atualmente?</h5>
+      <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <button id="btn-brazil" class="btn-primary rounded-0">Brasil 🇧🇷</button>
+        <button id="btn-usa" class="btn-primary rounded-0">Estados Unidos 🇺🇸</button>
+        <button id="btn-europa" class="btn-primary rounded-0">Europa 🇪🇺</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/jquery-3.7.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/plugin.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+  (function() {
+    var endDate = new Date();
+    endDate.setDate(endDate.getDate() + 7);
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+    function update() {
+      var now = new Date();
+      var d = endDate - now;
+      if (d <= 0) {
+        document.getElementById('cd-days').textContent = '00';
+        document.getElementById('cd-hours').textContent = '00';
+        document.getElementById('cd-mins').textContent = '00';
+        document.getElementById('cd-secs').textContent = '00';
+        return;
+      }
+      var days = Math.floor(d / 86400000);
+      var hours = Math.floor((d % 86400000) / 3600000);
+      var mins = Math.floor((d % 3600000) / 60000);
+      var secs = Math.floor((d % 60000) / 1000);
+      document.getElementById('cd-days').textContent = pad(days);
+      document.getElementById('cd-hours').textContent = pad(hours);
+      document.getElementById('cd-mins').textContent = pad(mins);
+      document.getElementById('cd-secs').textContent = pad(secs);
+    }
+    update();
+    setInterval(update, 1000);
+  })();
+  </script>
 </body>
 </html>
