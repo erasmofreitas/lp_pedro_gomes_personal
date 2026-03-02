@@ -1,19 +1,38 @@
 // Checkout helper (vanilla JS)
-// CHECKOUT placeholder for real checkout URLs
+// Treino PRO ON: Brasil → MFIT; EUA e Europa → Kiwify
 const CHECKOUT = {
-  // Example structure — replace with real URLs
   urls: {
     proon: {
-      mensal: '',
-      trimestral: '',
-      semestral: '',
-      anual: ''
+      mfit: {
+        mensal: 'https://pages.mfitpersonal.com.br/p/2gt9?checkout=true',
+        trimestral: 'https://pages.mfitpersonal.com.br/p/2im0?checkout=true',
+        semestral: 'https://pages.mfitpersonal.com.br/p/2im1?checkout=true',
+        anual: 'https://pages.mfitpersonal.com.br/index?acao=page&tipo=1&page=117434&isCheckout=true'
+      },
+      kiwify: {
+        mensal: 'https://pay.kiwify.com.br/5EzfNfs',
+        trimestral: 'https://pay.kiwify.com.br/KxbLhxo',
+        semestral: 'https://pay.kiwify.com.br/9aUY83q',
+        anual: 'https://pay.kiwify.com.br/oiQRpQv'
+      }
     },
     proon_dieta: {
-      mensal: '',
-      trimestral: '',
-      semestral: '',
-      anual: ''
+      mfit: {
+        mensal: 'https://pages.mfitpersonal.com.br/p/2im5?checkout=true',
+        trimestral: 'https://pages.mfitpersonal.com.br/p/2im6',
+        semestral: 'https://pages.mfitpersonal.com.br/p/2im7?checkout=true',
+        anual: 'https://pages.mfitpersonal.com.br/p/2im8?checkout=true'
+      },
+      kiwify: {
+        mensal: 'https://pay.kiwify.com.br/C8CuG45',
+        trimestral: 'https://pay.kiwify.com.br/Bz3Mnpc',
+        semestral: 'https://pay.kiwify.com.br/YTHsSvK',
+        anual: 'https://pay.kiwify.com.br/H5XPaAS'
+      }
+    },
+    premium: {
+      mfit: 'https://pages.mfitpersonal.com.br/p/2imm?checkout=true',
+      kiwify: 'https://pay.kiwify.com.br/In02VHV'
     }
   }
 };
@@ -50,12 +69,36 @@ const CHECKOUT = {
     const offer = selectedPlan.offer;
     const cycle = selectedPlan.cycle;
 
-    // Consulta Premium: abre o diálogo de país e depois redireciona para WhatsApp
-    if (offer === 'premium') {
-      closeModal();
-      const msg = encodeURIComponent('Olá, vim do site e gostaria de garantir minha vaga exclusiva na Consulta Premium PRO. Pode me explicar como funciona?');
-      window.open('https://wa.me/5562992937723?text=' + msg, '_blank', 'noopener,noreferrer');
-      return;
+    // Consulta Premium: Brasil → MFIT; EUA e Europa → Kiwify
+    if (offer === 'premium' && CHECKOUT.urls.premium) {
+      const url = (location === 'br') ? CHECKOUT.urls.premium.mfit : CHECKOUT.urls.premium.kiwify;
+      if (url) {
+        closeModal();
+        window.location.href = url;
+        return;
+      }
+    }
+
+    // Treino PRO ON: Brasil → MFIT; EUA e Europa → Kiwify
+    if (offer === 'proon' && CHECKOUT.urls.proon) {
+      const gateway = (location === 'br') ? CHECKOUT.urls.proon.mfit : CHECKOUT.urls.proon.kiwify;
+      const url = gateway && gateway[cycle];
+      if (url) {
+        closeModal();
+        window.location.href = url;
+        return;
+      }
+    }
+
+    // Treino + Dieta: Brasil → MFIT; EUA e Europa → Kiwify
+    if (offer === 'proon_dieta' && CHECKOUT.urls.proon_dieta) {
+      const gateway = (location === 'br') ? CHECKOUT.urls.proon_dieta.mfit : CHECKOUT.urls.proon_dieta.kiwify;
+      const url = gateway && gateway[cycle];
+      if (url) {
+        closeModal();
+        window.location.href = url;
+        return;
+      }
     }
 
     // Persist selected plan for checkout pages
@@ -65,7 +108,7 @@ const CHECKOUT = {
       // ignore storage errors
     }
 
-    // Try to use configured checkout URL if present
+    // Try to use configured checkout URL if present (outras ofertas)
     const configured = (CHECKOUT.urls && CHECKOUT.urls[offer] && CHECKOUT.urls[offer][cycle]) || '';
 
     if (configured) {
