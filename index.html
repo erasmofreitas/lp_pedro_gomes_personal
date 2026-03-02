@@ -6,6 +6,14 @@
 
   <title>Pedro Gomes – Treinador Pessoal</title>
 
+  <!-- Preconnect: reduz LCP e bloqueio por recursos externos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+  <!-- Preload da imagem LCP (hero 1200×800, mais leve para LCP) -->
+  <link rel="preload" as="image" href="image/fundo_alteres_1200x800.webp">
+
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/x-icon" href="image/logo.png">
 
@@ -66,7 +74,7 @@
 
   /* Header sempre acima do banner (evita "Quer emagrecer..." sobrepor) */
   body.index2 header { z-index: 1030 !important; }
-  /* Banner "Quer emagrecer...": mesmo fundo da seção Tecnologia; sem sobrepor o header */
+  /* Banner "Quer emagrecer...": hero como <img> + background fallback para garantir que a imagem carregue */
   body.index2 .banner {
     position: relative;
     margin-top: 0 !important;
@@ -75,6 +83,29 @@
     background-position: center;
     background-repeat: no-repeat;
   }
+  body.index2 .banner .banner-hero-img-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    min-height: 680px;
+  }
+  body.index2 .banner .banner-hero-img-wrap img {
+    width: 100%;
+    height: 100%;
+    min-height: 680px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  body.index2 .banner .banner-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  body.index2 .banner .overlay,
+  body.index2 .banner .overlay1 { z-index: 1; }
   body.index2 .banner::before {
     content: '';
     position: absolute;
@@ -495,7 +526,7 @@
             <div class="header-left text-center text-lg-start">
               <div class="header-logo-wrap">
                 <a href="#inicio" class="header-logo-link d-block">
-                  <img src="image/logo_sem_fundo.webp" alt="Pedro Gomes - Treinador Pessoal" class="header-logo-img m-auto">
+                  <img src="image/logo_sem_fundo.webp" alt="Pedro Gomes - Treinador Pessoal" class="header-logo-img m-auto" width="280" height="120" loading="lazy" decoding="async">
                 </a>
               </div>
               <div class="header-attend text-center">
@@ -544,15 +575,22 @@
 
   <!-- Banner Section Starts -->
   <section class="banner position-relative rounded-0 p-0" id="inicio">
+    <!-- Hero LCP: <img> + picture para preload e prioridade; evita background-image bloqueante -->
+    <div class="banner-hero-img-wrap" aria-hidden="true">
+      <picture>
+        <source srcset="image/fundo_alteres_1200x800.webp" type="image/webp">
+        <img src="image/fundo_alteres.jpg" alt="" width="1200" height="800" class="banner-hero-img" loading="eager" decoding="async" fetchpriority="high">
+      </picture>
+    </div>
     <div class="banner-slider1">
       <div>
-        <img src="image/gym-workout-morning-2022-11-02-04-12-58-utc.jpg" alt="gym workout">
+        <img src="image/gym-workout-morning-2022-11-02-04-12-58-utc.jpg" alt="gym workout" loading="lazy" decoding="async" width="1920" height="1080">
       </div>
       <div>
-        <img src="image/fitness-gym-2021-11-02-02-16-08-utc1.jpg" alt="gym workout">
+        <img src="image/fitness-gym-2021-11-02-02-16-08-utc1.jpg" alt="gym workout" loading="lazy" decoding="async" width="1920" height="1080">
       </div>
       <div>
-        <img src="image/the-female-athlete-training-hard-in-the-gym-fitne-2022-02-02-04-52-15-utc1.jpg" alt="gym workout">
+        <img src="image/the-female-athlete-training-hard-in-the-gym-fitne-2022-02-02-04-52-15-utc1.jpg" alt="gym workout" loading="lazy" decoding="async" width="1920" height="1080">
       </div>
     </div>
     <div class="overlay rounded-0"></div>
@@ -597,28 +635,28 @@
         <div class="row gx-md-5 gy-5 justify-content-center">
           <div class="col-md-6 col-lg-6">
             <div class="feature-box border border-4 border-primary-light text-center">
-              <img src="image/Fitness-and-Gym-07.png" alt="vídeo e foto" style="height: 65px; width: 65px;">
+              <img src="image/Fitness-and-Gym-07.png" alt="vídeo e foto" width="65" height="65" style="height: 65px; width: 65px;" loading="lazy" decoding="async">
               <h3 class="mt-2 mb-3 primary">Você vê, você faz</h3>
               <p class="white mb-0">Cada exercício com vídeo e foto na palma da sua mão para acertar o movimento de primeira. Sem nomes estranhos.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-6">
             <div class="feature-box border border-4 border-primary-light text-center">
-              <img src="image/Fitness-and-Gym-27.png" alt="organizado" style="height: 65px; width: 65px;">
+              <img src="image/Fitness-and-Gym-27.png" alt="organizado" width="65" height="65" style="height: 65px; width: 65px;" loading="lazy" decoding="async">
               <h3 class="mt-2 mb-3 primary">Tudo organizado pelo sistema</h3>
               <p class="white mb-0">Cargas, repetições e descanso detalhados na tela. A plataforma gerencia a estratégia; sua única preocupação é treinar.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-6">
             <div class="feature-box border border-4 border-primary text-center">
-              <img src="image/Fitness-and-Gym-09.png" alt="suporte" style="height: 65px; width: 65px;">
+              <img src="image/Fitness-and-Gym-09.png" alt="suporte" width="65" height="65" style="height: 65px; width: 65px;" loading="lazy" decoding="async">
               <h3 class="mt-2 mb-3 primary">Tô aqui com você</h3>
               <p class="white mb-0">Dúvida ou incômodo? Nunca mais treine sozinho — estamos a uma mensagem de distância direto pelo app.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-6">
             <div class="feature-box border border-4 border-primary-light text-center">
-              <img src="image/Fitness-and-Gym-08.png" alt="equipe" style="height: 65px; width: 65px;">
+              <img src="image/Fitness-and-Gym-08.png" alt="equipe" width="65" height="65" style="height: 65px; width: 65px;" loading="lazy" decoding="async">
               <h3 class="mt-2 mb-3 primary">Equipe Multidisciplinar</h3>
               <p class="white mb-0">Profissionais de Educação Física de excelência nos bastidores para otimizar seus treinos e oferecer suporte rápido.</p>
             </div>
@@ -699,7 +737,7 @@
           <div class="col-12 col-lg-7 order-1 order-lg-1">
             <div class="about-left me-lg-5">
               <div class="about-images about-photo-circle text-center mb-3">
-                <img src="image/pedro_sem_fundo3.png" alt="Prof. Pedro Gomes - Treinador" class="about-photo-img shadow">
+                <img src="image/pedro_sem_fundo3.png" alt="Prof. Pedro Gomes - Treinador" class="about-photo-img shadow" width="320" height="320" loading="lazy" decoding="async">
               </div>
               <div class="text-center py-3 px-3 bg-primary rounded">
                 <span class="h4 fw-bold white mb-0">4.200+ <span class="d-block small opacity-90">alunos no mundo</span></span>
@@ -717,7 +755,7 @@
                 <ul class="d-flex align-items-center gap-3">
                   <li>
                     <div class="about-mini-photo">
-                      <img src="image/pedro_sem_fundo3.png" alt="Prof. Pedro Gomes" class="about-mini-photo-img">
+                      <img src="image/pedro_sem_fundo3.png" alt="Prof. Pedro Gomes" class="about-mini-photo-img" width="55" height="55" loading="lazy" decoding="async">
                     </div>
                   </li>
                   <li>
@@ -748,7 +786,7 @@
           <div class="col-lg-5 order-2 order-lg-1">
             <div class="achievement-left">
               <div class="achievement-image mb-4 text-center">
-                <img src="image/people_active_sem_fundo.webp" alt="Estilo de vida ativo" class="w-100 achievement-main-img" style="max-height: 520px; object-fit: contain; filter: drop-shadow(0 1rem 2rem rgba(0,0,0,0.5));">
+                <img src="image/people_active_sem_fundo.webp" alt="Estilo de vida ativo" class="w-100 achievement-main-img" width="600" height="520" style="max-height: 520px; object-fit: contain; filter: drop-shadow(0 1rem 2rem rgba(0,0,0,0.5));" loading="lazy" decoding="async">
               </div>
               <div class="achievement-stats d-flex gap-4 justify-content-center">
                 <div class="customers-stats border-dashed border-2 p-4 text-center flex-grow-1">
@@ -994,7 +1032,7 @@
               </div>
               <div class="testimonial-bottom" style="margin-top: -30px;">
                 <div class="testimonial-image mb-3">
-                  <img src="image/portrait-of-personal-trainer-at-the-gym-2021-08-27-09-55-46-utc1.jpg" alt="treinador" class="rounded-circle object-fit-cover m-auto" style="height: 80px; width: 80px;">
+                  <img src="image/portrait-of-personal-trainer-at-the-gym-2021-08-27-09-55-46-utc1.jpg" alt="treinador" class="rounded-circle object-fit-cover m-auto" width="80" height="80" style="height: 80px; width: 80px;" loading="lazy" decoding="async">
                 </div>
                 <h4 class="primary">Mariana Costa</h4>
                 <p class="mb-0 white">Cliente</p>
@@ -1009,7 +1047,7 @@
               </div>
               <div class="testimonial-bottom" style="margin-top: -30px;">
                 <div class="testimonial-image mb-3">
-                  <img src="image/beautiful-fitness-woman-in-sportswear-doing-exerci-2021-08-28-00-08-34-utc1.jpg" alt="trainer" class="rounded-circle object-fit-cover m-auto" style="height: 80px; width: 80px;">
+                  <img src="image/beautiful-fitness-woman-in-sportswear-doing-exerci-2021-08-28-00-08-34-utc1.jpg" alt="trainer" class="rounded-circle object-fit-cover m-auto" width="80" height="80" style="height: 80px; width: 80px;" loading="lazy" decoding="async">
                 </div>
                 <h4 class="primary">Rafael Souza</h4>
                 <p class="mb-0 white">Cliente</p>
@@ -1024,7 +1062,7 @@
               </div>
               <div class="testimonial-bottom" style="margin-top: -30px;">
                 <div class="testimonial-image mb-3">
-                  <img src="image/trainer-helps-the-woman-to-perform-the-exercise-wi-2021-10-21-02-41-18-utc1.jpg" alt="trainer" class="rounded-circle object-fit-cover m-auto" style="height: 80px; width: 80px;">
+                  <img src="image/trainer-helps-the-woman-to-perform-the-exercise-wi-2021-10-21-02-41-18-utc1.jpg" alt="trainer" class="rounded-circle object-fit-cover m-auto" width="80" height="80" style="height: 80px; width: 80px;" loading="lazy" decoding="async">
                 </div>
                 <h4 class="primary">Ana Pereira</h4>
                 <p class="mb-0 white">Cliente</p>
@@ -1039,7 +1077,7 @@
               </div>
               <div class="testimonial-bottom" style="margin-top: -30px;">
                 <div class="testimonial-image mb-3">
-                  <img src="image/training-portrait-and-fitness-coach-doing-inspect-2022-12-24-04-35-50-utc1.jpg" alt="trainer" class="rounded-circle object-fit-cover m-auto" style="height: 80px; width: 80px;">
+                  <img src="image/training-portrait-and-fitness-coach-doing-inspect-2022-12-24-04-35-50-utc1.jpg" alt="trainer" class="rounded-circle object-fit-cover m-auto" width="80" height="80" style="height: 80px; width: 80px;" loading="lazy" decoding="async">
                 </div>
                 <h4 class="primary">Lucas Almeida</h4>
                 <p class="mb-0 white">Cliente</p>
@@ -1063,7 +1101,7 @@
             <div class="stat-left text-center">
               <div class="circle-container mx-auto w-100 h-auto">
                 <div class="circle"></div>  
-                <img src="image/team_sem_fundo.webp" alt="Equipe" class="position-relative m-auto stat-team-img" style="width: 100%; max-width: 780px;">
+                <img src="image/team_sem_fundo.webp" alt="Equipe" class="position-relative m-auto stat-team-img" width="780" height="400" style="width: 100%; max-width: 780px;" loading="lazy" decoding="async">
               </div>
             </div>
           </div>
@@ -1152,7 +1190,7 @@
           <div class="row align-items-center gy-4 text-center text-lg-start">
             <div class="col-lg-3">
               <div class="footer-top-left">
-                <a href="index.html" class="d-inline-block"><img src="image/logo_sem_fundo.webp" alt="Pedro Gomes - Treinador Pessoal" class="m-auto footer-logo-img"></a>
+                <a href="index.html" class="d-inline-block"><img src="image/logo_sem_fundo.webp" alt="Pedro Gomes - Treinador Pessoal" class="m-auto footer-logo-img" width="280" height="120" loading="lazy" decoding="async"></a>
               </div>
             </div>
             <div class="col-lg-7">
