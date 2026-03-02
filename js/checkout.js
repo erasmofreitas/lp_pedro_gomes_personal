@@ -41,6 +41,31 @@ const CHECKOUT = {
   'use strict';
 
   let selectedPlan = null;
+  /** País detectado por IP: 'br' | 'us' | 'eu' | null */
+  let detectedLocation = null;
+
+  /** Lista de códigos de país considerados "Europa" para o checkout */
+  var EUROPA_CODES = ['AD','AL','AT','BA','BE','BG','BY','CH','CZ','DE','DK','EE','ES','FI','FR','GB','GR','HR','HU','IE','IS','IT','LI','LT','LU','LV','MC','MD','ME','MK','MT','NL','NO','PL','PT','RO','RS','SE','SI','SK','SM','UA','VA','XK'];
+
+  function countryToLocation(countryCode) {
+    if (!countryCode || typeof countryCode !== 'string') return null;
+    var c = countryCode.toUpperCase();
+    if (c === 'BR') return 'br';
+    if (c === 'US') return 'us';
+    if (EUROPA_CODES.indexOf(c) !== -1) return 'eu';
+    return null;
+  }
+
+  function fetchCountryByIP() {
+    var url = 'https://ipapi.co/json/';
+    fetch(url)
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        var code = data && data.country_code;
+        detectedLocation = countryToLocation(code);
+      })
+      .catch(function () {});
+  }
 
   function openModal() {
     const overlay = document.getElementById('checkout-overlay');
@@ -49,6 +74,30 @@ const CHECKOUT = {
     overlay.style.display = 'block';
     modal.style.display = 'block';
     modal.setAttribute('aria-hidden', 'false');
+
+    // Pré-seleção visual pelo país detectado
+    var btnBrazil = document.getElementById('btn-brazil');
+    var btnUsa = document.getElementById('btn-usa');
+    var btnEuropa = document.getElementById('btn-europa');
+    [btnBrazil, btnUsa, btnEuropa].forEach(function (btn) {
+      if (!btn) return;
+      btn.classList.remove('checkout-country-detected');
+      btn.removeAttribute('aria-describedby');
+    });
+    var hint = document.getElementById('checkout-detected-hint');
+    if (hint) hint.remove();
+    if (detectedLocation) {
+      var detectedBtn = detectedLocation === 'br' ? btnBrazil : (detectedLocation === 'us' ? btnUsa : btnEuropa);
+      if (detectedBtn) {
+        detectedBtn.classList.add('checkout-country-detected');
+        var span = document.createElement('span');
+        span.id = 'checkout-detected-hint';
+        span.className = 'checkout-detected-hint';
+        span.setAttribute('aria-hidden', 'true');
+        span.textContent = ' (recomendado)';
+        detectedBtn.appendChild(span);
+      }
+    }
   }
 
   function closeModal() {
@@ -122,6 +171,9 @@ const CHECKOUT = {
       window.location.href = '/checkout.html?' + params.toString();
     }
   }
+
+  // Detecção de país por IP (ao carregar a página)
+  fetchCountryByIP();
 
   // Attach handlers after DOM is ready
   document.addEventListener('DOMContentLoaded', function () {
