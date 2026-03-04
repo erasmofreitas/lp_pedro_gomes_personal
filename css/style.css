@@ -2370,7 +2370,7 @@ footer .footer-bottom .social-link a i:hover {
 }
 /* Bloco Treino PRO ON: background próprio */
 .pricing-hero.pricing-hero-treino::before {
-  background-image: url('../image/fundo_alteres2.jpg');
+  background-image: url('../image/fundo_alteres2.webp');
 }
 /* Bloco Treino + Plano Alimentar: background próprio */
 .pricing-hero.pricing-hero-dieta::before {
@@ -2378,7 +2378,7 @@ footer .footer-bottom .social-link a i:hover {
 }
 /* Bloco Consulta Premium: background próprio */
 .pricing-hero.pricing-hero-premium::before {
-  background-image: url('../image/premium.png');
+  background-image: url('../image/premium.webp');
 }
 /* Consulta Premium: menos espaço acima e abaixo do card */
 .pricing-hero.pricing-hero-premium {
