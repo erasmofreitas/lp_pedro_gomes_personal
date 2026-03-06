@@ -542,6 +542,58 @@
     opacity: 0.9;
     margin-left: 0.15em;
   }
+
+  /* Widget flutuante WhatsApp */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9990;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #25D366;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.45);
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .whatsapp-float:hover {
+    color: #fff;
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+  }
+  .whatsapp-float i {
+    font-size: 1.75rem;
+  }
+  .whatsapp-float span.whatsapp-float-label {
+    position: absolute;
+    right: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: #25D366;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .whatsapp-float:hover span.whatsapp-float-label {
+    opacity: 1;
+  }
+  @media (max-width: 576px) {
+    .whatsapp-float { bottom: 20px; right: 20px; width: 52px; height: 52px; }
+    .whatsapp-float i { font-size: 1.5rem; }
+    .whatsapp-float span.whatsapp-float-label { display: none; }
+  }
 </style>
 </head>
 <body class="index2">
@@ -1307,5 +1359,10 @@
     setInterval(update, 1000);
   })();
   </script>
+  <!-- Widget flutuante WhatsApp -->
+  <a href="https://wa.me/5562992937723?text=Ol%C3%A1%20vim%20do%20site%20e%20gostaria%20de%20saber%20sobre%20a%20assessoria%20fitness%20do%20Professor%20Pedro%20Gomes" class="whatsapp-float" target="_blank" rel="noopener noreferrer" title="Fale conosco no WhatsApp" aria-label="Abrir chat no WhatsApp">
+    <span class="whatsapp-float-label">Fale conosco</span>
+    <i class="fa fa-whatsapp" aria-hidden="true"></i>
+  </a>
 </body>
 </html>
