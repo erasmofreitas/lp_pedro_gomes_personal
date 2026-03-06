@@ -6,8 +6,6 @@
 
   <title>Pedro Gomes – Treinador Pessoal</title>
 
-  <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/b660be8a62dae.js" data-cmp-host="b.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="16"></script>
-
   <!-- Preconnect: reduz LCP e bloqueio por recursos externos -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -545,14 +543,15 @@
     margin-left: 0.15em;
   }
 
-  /* Widget flutuante WhatsApp */
+  /* Widget flutuante WhatsApp – maior, alinhado ao centro vertical da página */
   .whatsapp-float {
     position: fixed;
-    bottom: 24px;
+    top: 50%;
     right: 24px;
+    transform: translateY(-50%);
     z-index: 9990;
-    width: 56px;
-    height: 56px;
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
     background: #25D366;
     color: #fff;
@@ -565,11 +564,11 @@
   }
   .whatsapp-float:hover {
     color: #fff;
-    transform: scale(1.08);
+    transform: translateY(-50%) scale(1.08);
     box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
   }
   .whatsapp-float i {
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
   .whatsapp-float span.whatsapp-float-label {
     position: absolute;
@@ -592,8 +591,8 @@
     opacity: 1;
   }
   @media (max-width: 576px) {
-    .whatsapp-float { bottom: 20px; right: 20px; width: 52px; height: 52px; }
-    .whatsapp-float i { font-size: 1.5rem; }
+    .whatsapp-float { right: 16px; width: 56px; height: 56px; }
+    .whatsapp-float i { font-size: 1.75rem; }
     .whatsapp-float span.whatsapp-float-label { display: none; }
   }
 </style>
