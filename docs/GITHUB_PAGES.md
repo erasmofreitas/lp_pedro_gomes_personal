@@ -46,6 +46,7 @@ git push origin main
 
 ## Observações
 
-- **index.html** na raiz é a própria LP (página inicial).
-- Qualquer alteração em **index.html**, **css/** ou **image/** basta ser commitada e enviada com `git push`; o GitHub Pages atualiza sozinho (pode levar 1–2 minutos).
+- **index.html** na raiz é a própria LP (página inicial), uma página única e autocontida (CSS, JS e imagens embutidos no próprio arquivo — não há pastas `css/`, `js/` ou `image/` no projeto).
+- **politica-privacidade.html** é a página de política de privacidade completa, linkada no rodapé da LP.
+- Qualquer alteração em **index.html** ou **politica-privacidade.html** basta ser commitada e enviada com `git push`; o GitHub Pages atualiza sozinho (pode levar 1–2 minutos).
 - No plano gratuito, o Pages exige repositório público (veja a seção acima).
